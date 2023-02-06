@@ -11,7 +11,7 @@ class OnboardingController extends GetxController {
   forwardAction() {
     pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
   }
-
+ 
   List<OnboardingInfo> onboardingPages = [
     OnboardingInfo('images/image1.svg', 'this is title 1',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
