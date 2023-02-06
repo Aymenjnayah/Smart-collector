@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:smart_collector/controllers/onboarding_controller.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Onboarding extends StatelessWidget {
+class Onboarding  extends StatelessWidget {
   final _controller = OnboardingController();
 
   @override
