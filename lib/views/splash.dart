@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import 'onboarding.dart';
+import 'Onboarding.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
