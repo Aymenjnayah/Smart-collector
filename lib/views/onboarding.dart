@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:smart_collector/controllers/onboarding_controller.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Onboarding  extends StatelessWidget {
+class Onboarding extends StatelessWidget {
   final _controller = OnboardingController();
 
   @override
@@ -77,10 +77,14 @@ class Onboarding  extends StatelessWidget {
               bottom: 20,
               child: FloatingActionButton(
                 elevation: 0,
-                onPressed: _controller.forwardAction,
-                // ignore: sort_child_properties_last
+                onPressed: _controller.isLastPage == true
+                    ? () {
+                        Navigator.pushNamed(context, '/SignInPage');
+                        print('Navigating to SignInPage');
+                      }
+                    : _controller.forwardAction,
                 child: Obx(() {
-                   return Text(_controller.isLastPage ? 'Start' : 'Next');
+                  return Text(_controller.isLastPage ? 'Start' : 'Next');
                 }),
                 backgroundColor: Colors.green,
               ),

@@ -1,35 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:smart_collector/splash.dart';
-import 'splash.dart';
+import 'package:smart_collector/views/Onboarding.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Smart collector',
       debugShowCheckedModeBanner: false,
-      
-      home: Splash(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Splash(),
+        '/Onboarding': (context) => Onboarding(),
+        '/SignInPage': (context) => SignInPage(),
+      },
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
     );
   }
 }
 
-
-
+class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       appBar: AppBar(
-      
+        title: Text('Sign In'),
       ),
       body: Center(),
     );
   }
-
+}
