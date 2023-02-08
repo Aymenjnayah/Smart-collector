@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_collector/splash.dart';
+import 'package:smart_collector/views/splash.dart';
 import 'package:smart_collector/views/Onboarding.dart';
 
 void main() {
