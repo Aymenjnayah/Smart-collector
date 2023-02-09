@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SignUpForm extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   @override
-  _SignUpFormState createState() => _SignUpFormState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignUpFormState extends State<SignUpForm> {
+class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();

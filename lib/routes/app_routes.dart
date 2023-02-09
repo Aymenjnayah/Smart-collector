@@ -1,4 +1,4 @@
-import 'package:smart_collector/views/onboarding.dart';
+import 'package:smart_collector/views/OnboardingPage.dart';
 
 class AppRoutes {
   static const splash = '/splash';

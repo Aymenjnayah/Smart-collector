@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:smart_collector/views/splash.dart';
-import 'package:smart_collector/views/Onboarding.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:smart_collector/routes/app_pages.dart';
+import 'package:smart_collector/views/OnboardingPage.dart';
+
+import 'bindings/OnBoardingBinding.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -9,30 +13,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Smart collector',
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => Splash(),
-        '/Onboarding': (context) => Onboarding(),
-        '/SignInPage': (context) => SignInPage(),
-      },
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
+      initialBinding: OnBoardingBinding(),
+      home:  OnboardingPage(),
+      getPages: AppPages.pages,
     );
   }
 }
 
-class SignInPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Sign In'),
-      ),
-      body: Center(),
-    );
-  }
-}

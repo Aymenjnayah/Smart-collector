@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import 'Onboarding.dart';
+import 'OnboardingPage.dart';
 
-class Splash extends StatefulWidget {
-  const Splash({Key? key}) : super(key: key);
+class SplashPage extends StatefulWidget {
+  const SplashPage({Key? key}) : super(key: key);
 
   @override
-  _SplashState createState() => _SplashState();
+  _SplashPageState createState() => _SplashPageState();
 }
 
-class _SplashState extends State<Splash> {
+class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3)).then((value) {
       Navigator.of(context)
-          .pushReplacement(CupertinoPageRoute(builder: (ctx) => Onboarding()));
+          .pushReplacement(CupertinoPageRoute(builder: (ctx) => OnboardingPage()));
     });
   }
 
