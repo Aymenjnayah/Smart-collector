@@ -1,124 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class SignUpPage extends StatefulWidget {
-  @override
-  _SignUpPageState createState() => _SignUpPageState();
-}
+import '../routes/app_routes.dart';
+import '../widgets/custum_text_field.dart';
 
-class _SignUpPageState extends State<SignUpPage> {
-  final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
+
+class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                icon: Icon(Icons.person),
-                labelText: 'Name',
-              ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter your name';
-                }
-                return null;
-              },
+    return  Scaffold(
+      body: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            makeInput(hint: "Name",icon: Icon(Icons.person)),
+            SizedBox(
+              height: 20.0,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                icon: Icon(Icons.email),
-                labelText: 'Email',
-              ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter your email';
-                }
-                return null;
-              },
+            makeInput(hint: "Email",icon: Icon(Icons.email)),
+            SizedBox(
+              height: 20.0,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              controller: _phoneController,
-              decoration: InputDecoration(
-                icon: Icon(Icons.phone),
-                labelText: 'Phone Number',
-              ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter your phone number';
-                }
-                return null;
-              },
+            makeInput(hint: "Phone number",icon: Icon(Icons.phone)),
+            SizedBox(
+              height: 20.0,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              obscureText: true,
-              controller: _passwordController,
-              decoration: InputDecoration(
-                icon: Icon(Icons.lock),
-                labelText: 'Password',
-              ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter your password';
-                }
-                return null;
-              },
+            makeInput(hint: "Password",icon: Icon(Icons.lock),obscureText: true),
+            SizedBox(
+              height: 20.0,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              obscureText: true,
-              controller: _confirmPasswordController,
-              decoration: InputDecoration(
-                icon: Icon(Icons.lock),
-                labelText: 'Confirm Password',
-              ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please confirm your password';
-                }
-                                if (value != _passwordController.text) {
-                  return 'Password does not match';
-                }
-                return null;
-              },
+            makeInput(hint: " confirm Password",icon: Icon(Icons.lock),obscureText: true),
+            SizedBox(
+              height: 20.0,
             ),
-          ),
-          Container(
-            width: double.infinity,
-            child: ElevatedButton(
-              color : Colors.green,
-              onPressed: () {
-                if (_formKey.currentState.validate()) {
-                  Scaffold.of(context).showSnackBar(
-                      SnackBar(content: Text('Signing up...')));
-                }
-              },
-              child: Text('Sign Up'),
+            FloatingActionButton(
+              elevation: 0,
+              onPressed: () {} ,
+              // ignore: sort_child_properties_last
+              child: Text('Sign up'),
+              backgroundColor: Colors.green,
+              
             ),
-          ),
-        ],
+             SizedBox(
+              height: 40.0,
+            ),
+            Row(
+              // ignore: sort_child_properties_last
+              children: <Widget>[
+                const Text('Already have account?'),
+                TextButton(
+                  child: const Text(
+                    'Sign in',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {Get.offNamed(AppRoutes.login);} 
+                )
+              ],
+              mainAxisAlignment: MainAxisAlignment.center,
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+
