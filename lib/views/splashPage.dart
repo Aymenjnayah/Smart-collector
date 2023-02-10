@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../controllers/Splash_controller.dart';
 
 class SplashPage extends GetView<SplashController> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
