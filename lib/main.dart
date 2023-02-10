@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
+      debugShowCheckedModeBanner: false,
       initialBinding: SplashBinding(),
       home:  SplashPage(),
       getPages: AppPages.pages,
