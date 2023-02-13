@@ -14,61 +14,62 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Welcome",style: GoogleFonts.poppins(fontSize: 32,color: primary_color),),
-            SizedBox(height: 10,),
-            Text("Create an Account !",style: GoogleFonts.poppins(fontSize: 18,color: Subtitle),),
-            SizedBox(height: 20,),
-            makeInput(hint: "Name",icon: Icon(Icons.person)),
-            SizedBox(
-              height: 20.0,
-            ),
-            makeInput(hint: "Email",icon: Icon(Icons.email)),
-            SizedBox(
-              height: 20.0,
-            ),
-            makeInput(hint: "Phone number",icon: Icon(Icons.phone)),
-            SizedBox(
-              height: 20.0,
-            ),
-            makeInput(hint: "Password",icon: Icon(Icons.lock),obscureText: true),
-            SizedBox(
-              height: 20.0,
-            ),
-            makeInput(hint: " confirm Password",icon: Icon(Icons.lock),obscureText: true),
-            SizedBox(
-              height: 20.0,
-            ),
-            ElevatedButton(
-              style: buttonPrimary,
-              onPressed: () {} ,
-              // ignore: sort_child_properties_last
-              child: Text('Sign up'),
-              
-            ),
-             // ignore: prefer_const_constructors
-             SizedBox(
-              height: 30.0,
-            ),
-            Row(
-              // ignore: sort_child_properties_last
-              children: <Widget>[
-                const Text('Already have account?'),
-                TextButton(
-                  child: const Text(
-                    'Sign in',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  onPressed: () {Get.offNamed(AppRoutes.login);} 
-                )
-              ],
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("Welcome",style: GoogleFonts.poppins(fontSize: 32,color: primary_color),),
+                SizedBox(height: 10,),
+                Text("Create an Account !",style: GoogleFonts.poppins(fontSize: 18,color: Subtitle),),
+                SizedBox(height: 20,),
+                makeInput(hint: "Name",icon: Icon(Icons.person)),
+                SizedBox(
+                  height: 20.0,
+                ),
+                makeInput(hint: "Email",icon: Icon(Icons.email)),
+                SizedBox(
+                  height: 20.0,
+                ),
+                makeInput(hint: "Phone number",icon: Icon(Icons.phone)),
+                SizedBox(
+                  height: 20.0,
+                ),
+                makeInput(hint: "Password",icon: Icon(Icons.lock),obscureText: true),
+                SizedBox(
+                  height: 20.0,
+                ),
+               
+                ElevatedButton(
+                  style: buttonPrimary,
+                  onPressed: () {} ,
+                  // ignore: sort_child_properties_last
+                  child: Text('Sign up'),
+                  
+                ),
+                 // ignore: prefer_const_constructors
+                 SizedBox(
+                  height: 30.0,
+                ),
+                Row(
+                  // ignore: sort_child_properties_last
+                  children: <Widget>[
+                    const Text('Already have account?'),
+                    TextButton(
+                      child: const Text(
+                        'Sign in',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      onPressed: () {Get.offNamed(AppRoutes.login);} 
+                    )
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

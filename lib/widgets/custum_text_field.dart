@@ -10,7 +10,7 @@ Widget makeInput({label,icon, obscureText = false,hint,controller}) {
       hintText: hint, hintStyle: GoogleFonts.poppins(),
       border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(30.0),
+          Radius.circular(20.0),
         ),
       ),
     ),
