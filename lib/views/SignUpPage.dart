@@ -1,5 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_collector/config/app_colors.dart';
+import 'package:smart_collector/widgets/submit_button.dart';
 
 import '../routes/app_routes.dart';
 import '../widgets/custum_text_field.dart';
@@ -15,6 +19,10 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text("Welcome",style: GoogleFonts.poppins(fontSize: 32,color: primary_color),),
+            SizedBox(height: 10,),
+            Text("Create an Account !",style: GoogleFonts.poppins(fontSize: 18,color: Subtitle),),
+            SizedBox(height: 20,),
             makeInput(hint: "Name",icon: Icon(Icons.person)),
             SizedBox(
               height: 20.0,
@@ -35,16 +43,16 @@ class SignUpPage extends StatelessWidget {
             SizedBox(
               height: 20.0,
             ),
-            FloatingActionButton(
-              elevation: 0,
+            ElevatedButton(
+              style: buttonPrimary,
               onPressed: () {} ,
               // ignore: sort_child_properties_last
               child: Text('Sign up'),
-              backgroundColor: Colors.green,
               
             ),
+             // ignore: prefer_const_constructors
              SizedBox(
-              height: 40.0,
+              height: 30.0,
             ),
             Row(
               // ignore: sort_child_properties_last

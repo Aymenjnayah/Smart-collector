@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_collector/widgets/submit_button.dart';
 
+import '../config/app_colors.dart';
 import '../routes/app_routes.dart';
 import '../widgets/custum_text_field.dart';
 
@@ -16,6 +19,10 @@ class SignInPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+              Text("Welcome",style: GoogleFonts.poppins(fontSize: 32,color: primary_color),),
+            SizedBox(height: 10,),
+            Text("log to your Account !",style: GoogleFonts.poppins(fontSize: 18,color: Subtitle),),
+            SizedBox(height: 20,),
             makeInput(hint: "Email",icon: Icon(Icons.email)),
             SizedBox(
               height: 20.0,
@@ -24,12 +31,12 @@ class SignInPage extends StatelessWidget {
             SizedBox(
               height: 20.0,
             ),
-            FloatingActionButton(
-              elevation: 0,
+            ElevatedButton(
+              style: buttonPrimary,
               onPressed: () {} ,
               // ignore: sort_child_properties_last
-              child: Text('Sign in'),
-              backgroundColor: Colors.green,
+              child: Text('Sign in', style: GoogleFonts.poppins(),),
+              
               
             ),
              SizedBox(
