@@ -36,7 +36,7 @@ class SignInPage extends StatelessWidget {
                 ),
                 ElevatedButton(
                   style: buttonPrimary,
-                  onPressed: () {} ,
+                  onPressed: ()  {Get.offNamed(AppRoutes.dashboard);}  ,
                   // ignore: sort_child_properties_last
                   child: Text('Sign in', style: GoogleFonts.poppins(),),
                   
