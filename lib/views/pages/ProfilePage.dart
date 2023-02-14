@@ -9,7 +9,7 @@ class ProfilePage  extends StatelessWidget  {
       body: Container(
         child: Center(
           child: Text(
-            "Messages Page",
+            "Profile Page",
             style: TextStyle(fontSize: 20),
           ),
         ),

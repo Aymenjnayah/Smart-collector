@@ -9,7 +9,7 @@ class LocationsPage extends StatelessWidget {
       body: Container(
         child: Center(
           child: Text(
-            "Users Page",
+            "Locations Page",
             style: TextStyle(fontSize: 20),
           ),
         ),

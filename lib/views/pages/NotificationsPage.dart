@@ -9,7 +9,7 @@ class NotificationsPage  extends StatelessWidget  {
       body: Container(
         child: Center(
           child: Text(
-            "Messages Page",
+            "Notifications Page",
             style: TextStyle(fontSize: 20),
           ),
         ),
