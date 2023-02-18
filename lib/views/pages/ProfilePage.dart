@@ -24,8 +24,8 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Text("Aymen Jnayah"),
-                  Text("contactaymenjnayah@gmail.com",
+                  const Text("Aymen Jnayah"),
+                  const Text("contactaymenjnayah@gmail.com",
                       style: TextStyle(
                         color: Colors.grey,
                       )),
