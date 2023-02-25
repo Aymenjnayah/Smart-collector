@@ -6,9 +6,15 @@ import 'package:get/utils.dart';
 import 'package:smart_collector/routes/app_routes.dart';
 
 class DashboardController extends GetxController {
+  final items = <String>[].obs;
 
-  forwardAction() {
-    Get.offNamed(AppRoutes.dashboard);
+  @override
+  void onInit() {
+    super.onInit();
+    items.addAll(['Item 1', 'Item 2', 'Item 3']);
+  }
+
+  void addItem(String item) {
+    items.add(item);
   }
 }
-
