@@ -21,9 +21,9 @@ class SignUpPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text("Welcome",style: GoogleFonts.poppins(fontSize: 32,color: primary_color),),
+                Text("Welcome",style: GoogleFonts.poppins(fontSize: 32,color: AppColor.primary_color),),
                 SizedBox(height: 10,),
-                Text("Create an Account !",style: GoogleFonts.poppins(fontSize: 18,color: Subtitle),),
+                Text("Create an Account !",style: GoogleFonts.poppins(fontSize: 18,color: AppColor.Subtitle),),
                 SizedBox(height: 20,),
                 makeInput(hint: "Name",icon: Icon(Icons.person)),
                 SizedBox(

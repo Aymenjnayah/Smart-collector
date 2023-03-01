@@ -6,22 +6,23 @@ import '../../config/app_colors.dart';
 import '../../widgets/custum_text_field.dart';
 import '../../widgets/submit_button.dart';
 
-
 class LocationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(20.0),
           child: SingleChildScrollView(
-            
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                  Text("Enter a location",style: GoogleFonts.poppins(fontSize: 32,color: primary_color),),
+                Text(
+                  "Enter a location",
+                  style: GoogleFonts.poppins(
+                      fontSize: 32, color: AppColor.primary_color),
+                ),
                 SizedBox(height: 10),
-                
                 makeInput(hint: "Select city"),
                 SizedBox(
                   height: 20.0,
@@ -40,14 +41,13 @@ class LocationsPage extends StatelessWidget {
                 ),
                 ElevatedButton(
                   style: buttonPrimary,
-                  onPressed: ()  {}  ,
+                  onPressed: () {},
                   // ignore: sort_child_properties_last
-                  child: Text('Add location', style: GoogleFonts.poppins(),),
-                  
-                  
+                  child: Text(
+                    'Add location',
+                    style: GoogleFonts.poppins(),
+                  ),
                 ),
-                
-               
               ],
             ),
           ),
@@ -56,4 +56,3 @@ class LocationsPage extends StatelessWidget {
     );
   }
 }
-

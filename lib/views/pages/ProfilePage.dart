@@ -20,7 +20,9 @@ class ProfilePage extends StatelessWidget {
                     height: 120,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(100),
-                      child: Image.asset('assets/images/aymen.jpg'),
+                      child: Image.asset(
+                        'assets/images/aymen.jpg',
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -37,13 +39,12 @@ class ProfilePage extends StatelessWidget {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromARGB(255, 229, 250, 230),
-                          
-                          side: BorderSide(width:2.5,color:Colors.green),
+                          side: BorderSide(width: 2.5, color: Colors.green),
                           shape: const StadiumBorder()),
                       child: Text(
                         "Edit Profile",
                         style: TextStyle(
-                            color: primary_color,
+                            color: AppColor.primary_color,
                             fontFamily: 'poppins-regular'),
                       ),
                     ),
@@ -66,7 +67,9 @@ class ProfilePage extends StatelessWidget {
                     icon: Icons.book,
                     onPress: () {},
                   ),
-                  const SizedBox(height: 10,),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   ProfileMenuWidget(
                     title: "Log out",
                     icon: Icons.logout,
@@ -76,7 +79,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ],
               ),
-            ), 
+            ),
           ),
         ),
       ),
@@ -107,9 +110,9 @@ class ProfileMenuWidget extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: primary_color.withOpacity(0.1),
+          color: AppColor.primary_color.withOpacity(0.1),
         ),
-        child: Icon(icon, color: primary_color),
+        child: Icon(icon, color: AppColor.primary_color),
       ),
       title: Text(
         title,

@@ -5,9 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_collector/bindings/SplashBinding.dart';
 import 'package:smart_collector/routes/app_pages.dart';
 import 'package:smart_collector/views/SplashPage.dart';
+import 'package:smart_collector/views/pages/DashboardPage.dart';
 
-
-
+import 'bindings/DashboardBinding.dart';
+import 'views/pages/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,15 +20,14 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.green,
-      textTheme: GoogleFonts.latoTextTheme(
-      Theme.of(context).textTheme,
-    ),
+        textTheme: GoogleFonts.latoTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
       debugShowCheckedModeBanner: false,
-      initialBinding: SplashBinding(),
-      home:  SplashPage(),
-      getPages: AppPages.pages,
+      initialBinding: DashboardBinding(),
+      home: DashboardPage(),
+      // getPages: AppPages.pages,
     );
   }
 }
-

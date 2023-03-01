@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import '../navigation/custom_animated_bottom_bar.dart';
 
 class DashboardPage extends StatefulWidget {
-
   @override
   _DashboardPageState createState() => _DashboardPageState();
 }
@@ -19,14 +18,10 @@ class _DashboardPageState extends State<DashboardPage> {
   final _inactiveColor = Colors.grey;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
-        body: getBody(),
-        bottomNavigationBar: _buildBottomBar()
-    );
+    return Scaffold(body: getBody(), bottomNavigationBar: _buildBottomBar());
   }
 
-  Widget _buildBottomBar(){
+  Widget _buildBottomBar() {
     return CustomAnimatedBottomBar(
       containerHeight: 70,
       backgroundColor: Colors.white,
@@ -46,7 +41,7 @@ class _DashboardPageState extends State<DashboardPage> {
         BottomNavyBarItem(
           icon: Icon(Icons.location_on),
           title: Text('Locations'),
-          activeColor: primary_color,
+          activeColor: AppColor.primary_color,
           inactiveColor: _inactiveColor,
           textAlign: TextAlign.center,
         ),
@@ -54,23 +49,21 @@ class _DashboardPageState extends State<DashboardPage> {
           icon: Icon(Icons.notifications),
           title: Text(
             'My News',
-             
           ),
-          activeColor: primary_color,
+          activeColor: AppColor.primary_color,
           inactiveColor: _inactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
           icon: Icon(Icons.person),
           title: Text('Profile'),
-          activeColor: primary_color,
+          activeColor: AppColor.primary_color,
           inactiveColor: _inactiveColor,
           textAlign: TextAlign.center,
         ),
       ],
     );
   }
-
 
   Widget getBody() {
     List<Widget> pages = [
@@ -84,6 +77,4 @@ class _DashboardPageState extends State<DashboardPage> {
       children: pages,
     );
   }
-
-
 }
