@@ -20,6 +20,7 @@ class RequestCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
+      margin: EdgeInsets.symmetric(vertical: 12,horizontal: 20),
       padding: EdgeInsets.symmetric(
         vertical: AppPadding.hp20,
         horizontal: AppPadding.wp14,

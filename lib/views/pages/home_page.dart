@@ -10,22 +10,17 @@ import '../../widgets/medium_text_widget.dart';
 import '../../widgets/request_card.dart';
 
 class HomePage extends StatelessWidget {
-  HomeController controller = HomeController();
+  final HomeController controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
-    print(controller.data.length);
 
-    return SafeArea(
-      child: Scaffold(
-          //body
-          body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: AppPadding.wp20),
-          child: Column(children: [
-            SizedBox(height: AppSize.hs20),
-            // head container
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
             Container(
               width: double.maxFinite,
+              margin: EdgeInsets.symmetric(vertical: 12,horizontal: 20),
               padding: EdgeInsets.symmetric(
                 vertical: AppPadding.hp14,
                 horizontal: AppPadding.wp10,
@@ -49,7 +44,7 @@ class HomePage extends StatelessWidget {
                           backgroundColor: AppColor.primary_color,
                           radius: 25,
                           backgroundImage:
-                              AssetImage("assets/images/aymen.jpg"),
+                          AssetImage("assets/images/aymen.jpg"),
                         ),
                         SizedBox(width: AppSize.ws10),
                         MediumTextWidget(
@@ -97,92 +92,30 @@ class HomePage extends StatelessWidget {
                     ),
                   ]),
             ),
-            SizedBox(height: AppSize.hs25),
-            // add request
-            controller.data.length == 0
-                ? Column(
-                    children: [
-                      SizedBox(
-                        width: Get.width / 1.5,
-                        child: Image.asset("assets/images/home_background.png"),
-                      ),
-                      SizedBox(height: AppSize.hs25),
-                      MediumTextWidget(
-                        text: "Get rid of cooking oil",
-                        size: FontSize.fs22,
-                        fontWeight: FontWeightManager.semiBold,
-                      ),
-                      MediumTextWidget(
-                        text: "with the smart collector",
-                        size: FontSize.fs22,
-                        fontWeight: FontWeightManager.semiBold,
-                      ),
-                      SizedBox(height: AppSize.hs10),
-                      MediumTextWidget(
-                        text: "make a resquest and we will come",
-                        size: FontSize.fs16,
-                        fontWeight: FontWeightManager.regular,
-                        color: AppColor.grey,
-                      ),
-                      MediumTextWidget(
-                        text: "to your home with a gift",
-                        size: FontSize.fs16,
-                        fontWeight: FontWeightManager.regular,
-                        color: AppColor.grey,
-                      ),
-                      SizedBox(height: AppSize.hs25),
-                      ButtonWidget(
-                        text: "Add New Request",
-                        color: AppColor.primary_color,
-                      )
-                    ],
-                  )
-                : Column(
-                    children: [
-                      //row
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          MediumTextWidget(
-                            text: "Your Requests",
-                            size: FontSize.fs20,
-                            fontWeight: FontWeightManager.semiBold,
-                          ),
-                          Icon(
-                            Icons.add_circle_outline,
-                            color: AppColor.primary_color,
-                            size: AppSize.hs20 * 2,
-                          )
-                        ],
-                      ),
-                      SizedBox(height: AppSize.hs25),
-                      //list
-                      Container(
-                        height: double.maxFinite,
-                        child: Expanded(
-                          child: ListView.separated(
-                            itemCount: controller.data.length ,
-                            itemBuilder: (context, index) {
-                              return RequestCard(
-                                liters: "${controller.data[index].liters}L",
-                                gift: controller.data[index].gift.toString(),
-                                date: controller.data[index].date.toString(),
-                              );
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return SizedBox(
-                                height: AppSize.hs20,
-                              );
-                            },
-                          ),
-                        ),
-                      )
-                    ],
+
+            Obx(
+                  () => Expanded(
+                    child: ListView.builder(
+                itemCount: controller.myList.length,
+                itemBuilder: (context, index) {
+                    return RequestCard(
+                      liters: "${controller.myList[index].liters}L",
+                      gift: controller.myList[index].gift.toString(),
+                      date: controller.myList[index].date.toString(),
+                    );
+                },
+              ),
                   ),
-          ]),
+            )
+          ],
         ),
-      )),
+      ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            controller.addItem();
+          },
+          child: Icon(Icons.add),
+        )
     );
   }
 }
