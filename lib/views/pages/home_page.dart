@@ -53,8 +53,8 @@ class HomePage extends StatelessWidget {
                         ),
                         SizedBox(width: AppSize.ws10),
                         MediumTextWidget(
-                          text: "Sidi ahmed habib",
-                          size: FontSize.fs20,
+                          text: "Aymen Jnayah",
+                          size: FontSize.fs14,
                           fontWeight: FontWeightManager.semiBold,
                         ),
                       ],
@@ -65,14 +65,14 @@ class HomePage extends StatelessWidget {
                         Row(
                           children: [
                             Icon(
-                              Icons.circle,
+                              Icons.attach_money_rounded,
                               size: AppSize.hs25,
                               color: AppColor.primary_color,
                             ),
                             SizedBox(width: AppSize.ws5),
                             MediumTextWidget(
-                              text: "15 Pts",
-                              size: FontSize.fs18,
+                              text: "78 Points",
+                              size: FontSize.fs14,
                               fontWeight: FontWeightManager.semiBold,
                             ),
                           ],
@@ -87,8 +87,8 @@ class HomePage extends StatelessWidget {
                             ),
                             SizedBox(width: AppSize.ws5),
                             MediumTextWidget(
-                              text: "15 Liters",
-                              size: FontSize.fs18,
+                              text: "126 Litres",
+                              size: FontSize.fs14,
                               fontWeight: FontWeightManager.semiBold,
                             ),
                           ],
@@ -144,7 +144,7 @@ class HomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           MediumTextWidget(
-                            text: "Your Request",
+                            text: "Your Requests",
                             size: FontSize.fs20,
                             fontWeight: FontWeightManager.semiBold,
                           ),
@@ -161,7 +161,7 @@ class HomePage extends StatelessWidget {
                         height: double.maxFinite,
                         child: Expanded(
                           child: ListView.separated(
-                            itemCount: controller.data.length,
+                            itemCount: controller.data.length ,
                             itemBuilder: (context, index) {
                               return RequestCard(
                                 liters: "${controller.data[index].liters}L",

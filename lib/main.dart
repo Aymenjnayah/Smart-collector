@@ -4,11 +4,9 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_collector/bindings/SplashBinding.dart';
 import 'package:smart_collector/routes/app_pages.dart';
-import 'package:smart_collector/views/SplashPage.dart';
-import 'package:smart_collector/views/pages/DashboardPage.dart';
 
-import 'bindings/DashboardBinding.dart';
-import 'views/pages/home_page.dart';
+import 'package:smart_collector/views/SplashPage.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -25,9 +23,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      initialBinding: DashboardBinding(),
-      home: DashboardPage(),
-      // getPages: AppPages.pages,
+      initialBinding: SplashBinding(),
+      home: SplashPage(),
+      getPages: AppPages.pages,
     );
   }
 }

@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+
 class HomeController {
   List<RequestModel> data = [
-    RequestModel(liters: 4, gift: "5l,14kg", date: "Mon,Oct 24"),
-    RequestModel(liters: 14, gift: "2l,25kg", date: "Mon,Oct 24"),
-    RequestModel(liters: 7, gift: "3l,25kg", date: "Mon,Oct 24"),
-    RequestModel(liters: 7, gift: "3l,25kg", date: "Mon,Oct 24"),
-    RequestModel(liters: 7, gift: "3l,25kg", date: "Mon,Oct 24"),
-    RequestModel(liters: 7, gift: "3l,25kg", date: "Mon,Oct 24"),
+    RequestModel(liters: 4, gift: "Pack Nadhif", date: "Mon,Oct 24"),
+    RequestModel(liters: 14, gift: "Pack javel", date: "Wed,Oct 26",),
+    RequestModel(liters: 7, gift: "Pack rose...", date: "Mon,Oct 31"),
+    RequestModel(liters: 7, gift: "2 pack nadhif", date: "Mon,Nov 04"),
+    RequestModel(liters: 7, gift: "2 pack javel", date: "Mon,Nov 06"),
+    RequestModel(liters: 7, gift: "2 pack lepi...", date: "Mon,Nov 29"),
   ];
 }
 

@@ -58,7 +58,7 @@ class RequestCard extends StatelessWidget {
               Container(
                 height: AppSize.hs25 * 3,
                 width: AppSize.ws5 / 3,
-                color: Colors.black,
+                color: Colors.grey,
               ),
               SizedBox(width: AppSize.ws20),
               Column(
@@ -67,7 +67,7 @@ class RequestCard extends StatelessWidget {
                   Row(
                     children: [
                       Icon(
-                        Icons.water_drop,
+                        Icons.swap_vert_circle,
                         size: AppSize.hs25,
                         color: AppColor.primary_color,
                       ),
@@ -76,7 +76,7 @@ class RequestCard extends StatelessWidget {
                       ),
                       MediumTextWidget(
                         text: gift,
-                        size: FontSize.fs20,
+                        size: FontSize.fs18,
                         fontWeight: FontWeightManager.semiBold,
                       ),
                     ],
@@ -94,7 +94,7 @@ class RequestCard extends StatelessWidget {
                       ),
                       MediumTextWidget(
                         text: date,
-                        size: FontSize.fs20,
+                        size: FontSize.fs16,
                         fontWeight: FontWeightManager.regular,
                       ),
                     ],
