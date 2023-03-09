@@ -1,14 +1,20 @@
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+// my_controller.dart
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
-import 'package:get/utils.dart';
-import 'package:smart_collector/routes/app_routes.dart';
 
-class NotificationsController extends GetxController {
+class NotificationsController extends GetxController with SingleGetTickerProviderMixin {
+  late TabController tabController;
 
-  forwardAction() {
-    Get.offNamed(AppRoutes.notifications);
+  @override
+  void onInit() {
+    super.onInit();
+    tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void onClose() {
+    tabController.dispose();
+    super.onClose();
   }
 }
-
