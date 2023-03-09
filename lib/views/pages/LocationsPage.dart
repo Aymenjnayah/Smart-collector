@@ -1,58 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_collector/controllers/Locations_controller.dart';
 
 import '../../config/app_colors.dart';
-import '../../widgets/custum_text_field.dart';
-import '../../widgets/submit_button.dart';
+import '../../config/fonts_manager.dart';
+import '../../config/values_manager.dart';
+import '../../widgets/medium_text_widget.dart';
+import '../../widgets/request_card.dart';
 
 class LocationsPage extends StatelessWidget {
+  final LocationsController controller = Get.put(LocationsController());
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "Enter a location",
-                  style: GoogleFonts.poppins(
-                      fontSize: 32, color: AppColor.primary_color),
-                ),
-                SizedBox(height: 10),
-                makeInput(hint: "Select city"),
-                SizedBox(
-                  height: 20.0,
-                ),
-                makeInput(hint: "Select town"),
-                SizedBox(
-                  height: 20.0,
-                ),
-                makeInput(hint: "Enter house address"),
-                SizedBox(
-                  height: 20.0,
-                ),
-                makeInput(hint: "Add comment"),
-                SizedBox(
-                  height: 20.0,
-                ),
-                ElevatedButton(
-                  style: buttonPrimary,
-                  onPressed: () {},
-                  // ignore: sort_child_properties_last
-                  child: Text(
-                    'Add location',
-                    style: GoogleFonts.poppins(),
+        child: Column(
+          children: [
+
+            Obx(
+                  () => Expanded(
+                    child: ListView.builder(
+                itemCount: controller.myLocationsList.length,
+                itemBuilder: (context, index) {
+                    return RequestCard(
+                      liters: "${controller.myLocationsList[index].liters}L",
+                      gift: controller.myLocationsList[index].gift.toString(),
+                      date: controller.myLocationsList[index].date.toString(),
+                    );
+                },
+              ),
                   ),
-                ),
-              ],
-            ),
-          ),
+            )
+          ],
         ),
       ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            controller.addItem();
+          },
+          child: Icon(Icons.add),
+        )
     );
   }
 }
