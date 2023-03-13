@@ -8,7 +8,7 @@ class NotificationsController extends GetxController with SingleGetTickerProvide
 
   @override
   void onInit() {
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
     super.onInit();
   }
 

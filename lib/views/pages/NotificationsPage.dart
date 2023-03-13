@@ -2,32 +2,37 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../config/app_colors.dart';
 import '../../controllers/notifications_controller.dart';
 
 class NotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<NotificationsController>(
-      init: NotificationsController(),
-      builder: (controller) => Scaffold(
-        appBar: AppBar(
-          title: Text('Notifications'),
-          bottom: TabBar(
-            controller: controller.tabController,
-            tabs: [
-              Tab(text: 'Tab 1'),
-              Tab(text: 'Tab 2'),
-              Tab(text: 'Tab 3'),
+    return SafeArea(
+      child: GetBuilder<NotificationsController>(
+        init: NotificationsController(),
+        builder: (controller) => Scaffold(
+          body: Column(
+            children: [
+              TabBar(
+                controller: controller.tabController,
+                tabs: [
+                  Tab(text: ('My Requests'),
+                ),
+                  Tab(text: 'Newsletter'),
+                ],
+              ),
+              Expanded(
+                child: TabBarView(
+                  controller: controller.tabController,
+                  children: [
+                    Center(child: Text('My Requests')),
+                    Center(child: Text('This is Newsletter')),
+                  ],
+                ),
+              ),
             ],
           ),
-        ),
-        body: TabBarView(
-          controller: controller.tabController,
-          children: [
-            Center(child: Text('This is Tab 1')),
-            Center(child: Text('This is Tab 2')),
-            Center(child: Text('This is Tab 3')),
-          ],
         ),
       ),
     );
