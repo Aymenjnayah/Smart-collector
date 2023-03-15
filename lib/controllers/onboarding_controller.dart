@@ -18,11 +18,11 @@ class OnboardingController extends GetxController{
   }
  
   List<OnboardingInfo> onboardingPages = [
-    OnboardingInfo('images/image1.svg', 'this is title 1',
+    OnboardingInfo('assets/images/image1.svg', 'this is title 1',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
-    OnboardingInfo('images/image2.svg', 'this is title 2',
+    OnboardingInfo('assets/images/image2.svg', 'this is title 2',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
-    OnboardingInfo('images/image3.svg', 'this is title 3',
+    OnboardingInfo('assets/images/image3.svg', 'this is title 3',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
   ];
 }
