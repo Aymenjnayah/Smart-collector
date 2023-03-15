@@ -11,11 +11,13 @@ class SplashPage extends GetView<SplashController> {
       child: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 200,),
-            Center(
-              child: Image.asset('assets/images/logo.png', width: 300,),
+            const SizedBox(height: 200),
+            Expanded(
+              child: Center(
+                child: Image.asset('assets/images/logo.png', width: 300),
+              ),
             ),
-            CircularProgressIndicator(
+            const CircularProgressIndicator(
               color: Colors.green,
             ),
           ],
