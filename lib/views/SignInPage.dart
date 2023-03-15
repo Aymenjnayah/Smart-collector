@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_collector/widgets/submit_button.dart';
 
@@ -9,60 +8,64 @@ import '../routes/app_routes.dart';
 import '../widgets/custum_text_field.dart';
 
 class SignInPage extends StatelessWidget {
+  static const registerRoute = '/register';
+  static const dashboardRoute = '/dashboard';
+
+  const SignInPage({Key? key}) : super(key: key);
+
+  Widget buildSpacer() {
+    return const SizedBox(
+      height: 20.0,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
+                const Text(
                   "Welcome",
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                       fontSize: 32, color: AppColor.primary_color),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text(
+                const Text(
                   "log to your Account !",
-                  style: GoogleFonts.poppins(
-                      fontSize: 18, color: AppColor.Subtitle),
+                  style: TextStyle(fontSize: 18, color: AppColor.Subtitle),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                makeInput(hint: "Email", icon: Icon(Icons.email)),
-                SizedBox(
-                  height: 20.0,
-                ),
+                makeInput(hint: "Email", icon: const Icon(Icons.email)),
+                buildSpacer(),
                 makeInput(
                   hint: "Password",
-                  icon: Icon(Icons.lock),
+                  icon: const Icon(Icons.lock),
                 ),
-                SizedBox(
-                  height: 20.0,
-                ),
+                buildSpacer(),
                 ElevatedButton(
                   style: buttonPrimary,
                   onPressed: () {
-                    Get.offNamed(AppRoutes.dashboard);
+                    Get.offNamed(dashboardRoute);
                   },
-                  // ignore: sort_child_properties_last
-                  child: Text(
+                  child: const Text(
                     'Sign in',
-                    style: GoogleFonts.poppins(),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40.0,
                 ),
                 Row(
-                  // ignore: sort_child_properties_last
-                  children: <Widget>[
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                     const Text('Does not have account?'),
                     TextButton(
                         child: const Text(
@@ -70,10 +73,9 @@ class SignInPage extends StatelessWidget {
                           style: TextStyle(fontSize: 20),
                         ),
                         onPressed: () {
-                          Get.offNamed(AppRoutes.register);
+                          Get.offNamed(registerRoute);
                         })
                   ],
-                  mainAxisAlignment: MainAxisAlignment.center,
                 ),
               ],
             ),
