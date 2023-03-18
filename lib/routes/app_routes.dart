@@ -10,4 +10,10 @@ class AppRoutes {
   static const locations = '/locations';
   static const notifications = '/notifications';
   static const profile = '/profile';
+  static const EditAccount = '/EditAccount';
+  static const EnterPassword = '/EnterPassword';
+  static const ForgetPassword = '/ForgetPassword';
+  static const NewRequest = '/NewRequest';
+  static const RequestDetails = '/RequestDetails';
+  static const VerifyAccount = '/VerifyAccount';
 }

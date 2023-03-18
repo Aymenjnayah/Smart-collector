@@ -2,9 +2,10 @@ import 'package:get/get.dart';
 import 'package:smart_collector/controllers/Locations_controller.dart';
 
 class LocationsController extends GetxController {
-  final myLocationsList = <RequestModel>[].obs;
+    /* final myLocationsList = <RequestModel>[].obs;
 
   @override
+
   void onInit() {
     super.onInit();
     myLocationsList.addAll([
@@ -20,4 +21,6 @@ class LocationsController extends GetxController {
       RequestModel(liters: 7, gift: '2 pack lepi...', date: 'Mon, Nov 29'),
     );
   }
+
+  */
 }

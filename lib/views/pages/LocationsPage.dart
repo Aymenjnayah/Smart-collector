@@ -14,6 +14,7 @@ class LocationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      /*
       body: SafeArea(
         child: Column(
           children: [
@@ -35,12 +36,15 @@ class LocationsPage extends StatelessWidget {
           ],
         ),
       ),
+      
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             controller.addItem();
           },
+        
           child: Icon(Icons.add),
         )
+          */
     );
   }
 }
