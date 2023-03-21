@@ -6,7 +6,7 @@ import 'package:smart_collector/bindings/SplashBinding.dart';
 import 'package:smart_collector/routes/app_pages.dart';
 
 import 'package:smart_collector/views/SplashPage.dart';
-
+import 'package:smart_collector/views/pages/new_request/NewRequestPage_step1.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      initialBinding: SplashBinding(),
-      home: SplashPage(),
-      getPages: AppPages.pages,
+      //initialBinding: SplashBinding(),
+      home: NewRequestPageStepOne(),
+      //getPages: AppPages.pages,
     );
   }
 }

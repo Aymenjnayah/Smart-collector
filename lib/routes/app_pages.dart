@@ -24,7 +24,7 @@ import '../views/pages/ProfilePage.dart';
 import '../views/pages/EditAccountPage.dart';
 import '../views/pages/EnterPasswordPage.dart';
 import '../views/pages/ForgetPasswordPage.dart';
-import '../views/pages/NewRequestPage.dart';
+import '../views/pages/new_request/NewRequestPage_step1.dart';
 import '../views/pages/RequestDetailsPage.dart';
 import '../views/pages/VerifyAccountPage.dart';
 import 'app_routes.dart';
@@ -88,7 +88,7 @@ class AppPages {
     ),
          GetPage(
       name: AppRoutes.NewRequest,
-      page: () => NewRequestPage(),
+      page: () => NewRequestPageStepOne(),
       binding: NewRequestBinding(),
     ),
          GetPage(
