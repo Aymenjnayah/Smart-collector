@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      //initialBinding: SplashBinding(),
-      home: NewRequestPageStepOne(),
-      //getPages: AppPages.pages,
+      initialBinding: SplashBinding(),
+      home: SplashPage(),
+      getPages: AppPages.pages,
     );
   }
 }

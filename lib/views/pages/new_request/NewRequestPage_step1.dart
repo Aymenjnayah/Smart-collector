@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_collector/config/values_manager.dart';
+import 'package:smart_collector/routes/app_routes.dart';
 
 import '../../../config/app_colors.dart';
 import '../../../widgets/custum_text_field.dart';
@@ -32,14 +33,20 @@ class NewRequestPageStepOne extends StatelessWidget {
                           borderRadius: BorderRadius.circular(100),
                           color: Colors.grey.withOpacity(0.1),
                         ),
-                        child: Icon(
+                        child: IconButton(
+                          onPressed:() {
+                            Get.offNamed(AppRoutes.dashboard);
+                          },
+                          icon : Icon(
+                           
                           Icons.chevron_left,
                           size: 30.0,
                           color: Color.fromARGB(255, 81, 78, 78),
+                          ),
                         ),
                       ),
                       MediumTextWidget(
-                        text: "Our weekly newsletter",
+                        text: "Make a new Request",
                         color: AppColor.Subtitle,
                         size: FontSize.fs18,
                       ),

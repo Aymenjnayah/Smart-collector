@@ -6,6 +6,7 @@ import 'package:smart_collector/widgets/button_widget.dart';
 import '../../config/app_colors.dart';
 import '../../config/fonts_manager.dart';
 import '../../config/values_manager.dart';
+import '../../routes/app_routes.dart';
 import '../../widgets/medium_text_widget.dart';
 import '../../widgets/request_card.dart';
 
@@ -112,7 +113,7 @@ class HomePage extends StatelessWidget {
       ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            controller.addItem();
+           Get.offNamed(AppRoutes.NewRequest1);
           },
           child: Icon(Icons.add),
         )

@@ -13,7 +13,8 @@ class AppRoutes {
   static const EditAccount = '/EditAccount';
   static const EnterPassword = '/EnterPassword';
   static const ForgetPassword = '/ForgetPassword';
-  static const NewRequest = '/NewRequest';
+  static const NewRequest1 = '/NewRequest1';
+    static const NewRequest2 = '/NewRequest2';
   static const RequestDetails = '/RequestDetails';
   static const VerifyAccount = '/VerifyAccount';
 }

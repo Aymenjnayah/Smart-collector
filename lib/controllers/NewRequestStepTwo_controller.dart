@@ -8,7 +8,7 @@ import 'package:smart_collector/routes/app_routes.dart';
 class NewRequestController extends GetxController {
 
   forwardAction() {
-    Get.offNamed(AppRoutes.NewRequest);
+    Get.offNamed(AppRoutes.NewRequest2);
   }
 }
 

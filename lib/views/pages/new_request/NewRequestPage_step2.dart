@@ -5,8 +5,8 @@ import 'package:smart_collector/config/values_manager.dart';
 import '../../../config/app_colors.dart';
 import '../../../widgets/medium_text_widget.dart';
 
-class NewRequestPage extends StatelessWidget {
-  const NewRequestPage({Key? key}) : super(key: key);
+class NewRequestPageSteptwo extends StatelessWidget {
+  const NewRequestPageSteptwo ({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

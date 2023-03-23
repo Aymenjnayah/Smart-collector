@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../controllers/NewRequest_controller.dart';
+import '../controllers/NewRequestStepTwo_controller.dart';
 
 class NewRequestBinding extends Bindings {
   @override
