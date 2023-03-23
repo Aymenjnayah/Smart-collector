@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_collector/routes/app_routes.dart';
 
 import '../../config/app_colors.dart';
 
@@ -36,7 +37,7 @@ class ProfilePage extends StatelessWidget {
                     width: 200,
                     height: 45,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: ( ) {Get.offNamed(AppRoutes.EditAccount);},
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromARGB(255, 229, 250, 230),
                           side: BorderSide(width: 2.5, color: Colors.green),
