@@ -56,7 +56,7 @@ class NewRequestPageStepOne extends StatelessWidget {
                   MediumTextWidget(
                     text: "Set amount, appointment and address",
                     color: AppColor.gold,
-                    size: FontSize.fs18,
+                    size: FontSize.fs14,
                   ),
                   SizedBox(height: AppSize.hs14),
                   Row(

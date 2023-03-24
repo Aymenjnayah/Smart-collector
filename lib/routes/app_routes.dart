@@ -14,7 +14,12 @@ class AppRoutes {
   static const EnterPassword = '/EnterPassword';
   static const ForgetPassword = '/ForgetPassword';
   static const NewRequest1 = '/NewRequest1';
-    static const NewRequest2 = '/NewRequest2';
+  static const NewRequest2 = '/NewRequest2';
   static const RequestDetails = '/RequestDetails';
   static const VerifyAccount = '/VerifyAccount';
+  static const Settings = '/Settings';
+    static const AboutUs = '/AboutUs';
+      static const Termsconditions = '/Termsconditions';
+
+
 }

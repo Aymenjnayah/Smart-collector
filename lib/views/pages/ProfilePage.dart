@@ -56,17 +56,17 @@ class ProfilePage extends StatelessWidget {
                   ProfileMenuWidget(
                     title: "Settings",
                     icon: Icons.settings,
-                    onPress: () {},
+                    onPress: () {Get.offNamed(AppRoutes.Settings);},
                   ),
                   ProfileMenuWidget(
                     title: "About Us",
                     icon: Icons.question_answer,
-                    onPress: () {},
+                    onPress: () {Get.offNamed(AppRoutes.AboutUs);},
                   ),
                   ProfileMenuWidget(
                     title: "Terms & conditions",
                     icon: Icons.book,
-                    onPress: () {},
+                    onPress: () {Get.offNamed(AppRoutes.Termsconditions);},
                   ),
                   const SizedBox(
                     height: 10,
