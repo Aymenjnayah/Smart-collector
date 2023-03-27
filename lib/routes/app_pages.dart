@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:smart_collector/views/pages/AboutUsPage.dart';
+import 'package:smart_collector/views/pages/SettingsPage.dart';
+import 'package:smart_collector/views/pages/TermsConditionsPage.dart';
 import '../bindings/EditAccountBinding.dart';
 import '../bindings/EnterPasswordBinding.dart';
 import '../bindings/ForgetPasswordBinding.dart';
@@ -106,6 +109,18 @@ class AppPages {
       name: AppRoutes.VerifyAccount,
       page: () => VerifyAccountPage(),
       binding: VerifyAccountBinding(),
+    ),
+        GetPage(
+      name: AppRoutes.Settings,
+      page: () => SettingsPage(),
+    ),
+        GetPage(
+      name: AppRoutes.Termsconditions,
+      page: () => TermsConditionsPage(),
+    ),
+            GetPage(
+      name: AppRoutes.AboutUs,
+      page: () => AboutUsPage(),
     ),
   ];
 }
