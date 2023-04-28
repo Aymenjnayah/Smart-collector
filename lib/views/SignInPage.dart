@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_collector/config/values_manager.dart';
-import 'package:smart_collector/widgets/submit_button.dart';
+import 'package:smart_collector/controllers/singin_controller.dart';
+import 'package:smart_collector/widgets/SubmitButton.dart';
 
 import '../config/app_colors.dart';
-import '../routes/app_routes.dart';
 import '../widgets/custum_text_field.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends GetView<SignInController> {
   static const registerRoute = '/register';
   static const dashboardRoute = '/dashboard';
 
@@ -24,29 +23,41 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Center(
-            child: Container(
-              padding: EdgeInsets.all(AppPadding.hp20),
-              child: Column(
-                children: <Widget>[
+        child: Container(
+          padding: EdgeInsets.all(AppPadding.hp20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+
+              Column(
+                children: [
+                  SizedBox(
+                    height: AppSize.hs100,
+                  ),
                   Text(
                     "Welcome",
                     style: TextStyle(
-                        fontSize: FontSize.fs16 * 2,
-                        color: AppColor.primary_color),
+                      fontWeight: FontWeight.bold,
+                      fontSize: FontSize.fs20 * 2,
+                      color: AppColor.primary_color,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                   SizedBox(
                     height: AppSize.hs10,
                   ),
                   const Text(
-                    "log to your Account !",
-                    style: TextStyle(fontSize: 18, color: AppColor.Subtitle),
+                    "Log to your Account !",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                      color: AppColor.Subtitle,
+                    ),
                   ),
-                  SizedBox(
-                    height: AppSize.hs20,
-                  ),
+                ],
+              ),
+              Column(
+                children: [
                   makeInput(hint: "Email", icon: const Icon(Icons.email)),
                   buildSpacer(),
                   makeInput(
@@ -54,35 +65,32 @@ class SignInPage extends StatelessWidget {
                     icon: const Icon(Icons.lock),
                   ),
                   buildSpacer(),
-                  ElevatedButton(
-                    style: buttonPrimary,
-                    onPressed: () {
-                      Get.offNamed(dashboardRoute);
-                    },
-                    child: const Text(
-                      'Sign in',
+                  SubmitButton(
+                      buttonText: "Sign in",
+                      onPressed: ()=>{
+                        controller.goToDashboard()
+                      },),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Does not have account?'),
+                  TextButton(
+                    child: Text(
+                      'Sign up',
+                      style: TextStyle(fontSize: FontSize.fs20),
                     ),
-                  ),
-                  SizedBox(
-                    height: AppSize.hs20 * 2,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('Does not have account?'),
-                      TextButton(
-                          child: Text(
-                            'Sign up',
-                            style: TextStyle(fontSize: FontSize.fs20),
-                          ),
-                          onPressed: () {
-                            Get.offNamed(registerRoute);
-                          })
-                    ],
+                    onPressed:()=>{
+                      controller.goToRegister()
+                    },
                   ),
                 ],
               ),
-            ),
+              SizedBox(
+                height: 20.0,
+              ),
+            ],
           ),
         ),
       ),

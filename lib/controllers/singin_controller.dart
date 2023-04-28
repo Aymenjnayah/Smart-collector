@@ -5,7 +5,11 @@ import 'package:get/utils.dart';
 import 'package:smart_collector/routes/app_routes.dart';
 
 class SignInController extends GetxController {
-  forwardAction() {
-    Get.offNamed(AppRoutes.register);
+  goToRegister() {
+    Get.toNamed(AppRoutes.register);
+  }
+
+  goToDashboard(){
+    Get.toNamed(AppRoutes.dashboard);
   }
 }

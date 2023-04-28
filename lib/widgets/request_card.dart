@@ -6,111 +6,121 @@ import '../config/values_manager.dart';
 import 'medium_text_widget.dart';
 
 class RequestCard extends StatelessWidget {
-  String gift;
-  String liters;
-  String date;
+  final String gift;
+  final String liters;
+  final String date;
 
-  RequestCard(
-      {super.key,
-      required this.liters,
-      required this.gift,
-      required this.date});
+  const RequestCard({
+    Key? key,
+    required this.liters,
+    required this.gift,
+    required this.date,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.maxFinite,
-      margin: EdgeInsets.symmetric(vertical: 12,horizontal: 20),
-      padding: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+      padding:  EdgeInsets.symmetric(
         vertical: AppPadding.hp20,
         horizontal: AppPadding.wp14,
       ),
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(AppSize.hs25),
-          boxShadow: [
-            BoxShadow(
-              color: AppColor.primary_color,
-              blurRadius: AppSize.hs10,
-              offset: Offset(0, 0),
-            ),
-          ]),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: AppColor.primary_color,
+            blurRadius: AppSize.hs5,
+            offset: Offset.zero,
+          ),
+        ],
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              Column(
-                children: [
-                  Icon(
-                    Icons.water_drop,
-                    size: AppSize.hs25,
-                    color: AppColor.gold,
-                  ),
-                  SizedBox(height: AppSize.hs5),
-                  MediumTextWidget(
-                    text: liters,
-                    size: FontSize.fs20,
-                    fontWeight: FontWeightManager.semiBold,
-                  ),
-                ],
-              ),
-              SizedBox(width: AppSize.ws20),
-              Container(
-                height: AppSize.hs25 * 3,
-                width: AppSize.ws5 / 3,
-                color: Colors.grey,
-              ),
-              SizedBox(width: AppSize.ws20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.swap_vert_circle,
-                        size: AppSize.hs25,
-                        color: AppColor.primary_color,
-                      ),
-                      SizedBox(
-                        width: AppSize.ws10,
-                      ),
-                      MediumTextWidget(
-                        text: gift,
-                        size: FontSize.fs18,
-                        fontWeight: FontWeightManager.semiBold,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: AppSize.hs5),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.calendar_month,
-                        size: AppSize.hs25,
-                        color: AppColor.primary_color,
-                      ),
-                      SizedBox(
-                        width: AppSize.ws10,
-                      ),
-                      MediumTextWidget(
-                        text: date,
-                        size: FontSize.fs16,
-                        fontWeight: FontWeightManager.regular,
-                      ),
-                    ],
-                  )
-                ],
-              ),
+              _buildLiters(),
+              _buildDivider(),
+              _buildGiftAndDate(),
             ],
           ),
-          Icon(
-            Icons.delete,
-            size: AppSize.hs25 * 2,
-            color: AppColor.danger,
-          )
+          _buildDeleteButton(),
         ],
       ),
+    );
+  }
+
+  Widget _buildLiters() {
+    return Column(
+      children: [
+        Icon(
+          Icons.water_drop,
+          size: AppSize.hs25,
+          color: AppColor.gold,
+        ),
+         SizedBox(height: AppSize.hs5),
+        MediumTextWidget(
+          text: liters,
+          size: FontSize.fs20,
+          fontWeight: FontWeightManager.semiBold,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDivider() {
+    return  SizedBox(
+      width: AppSize.ws20,
+      child: const VerticalDivider(color: Colors.grey),
+    );
+  }
+
+  Widget _buildGiftAndDate() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Icon(
+              Icons.swap_vert_circle,
+              size: AppSize.hs25,
+              color: AppColor.primary_color,
+            ),
+             SizedBox(width: AppSize.ws10),
+            MediumTextWidget(
+              text: gift,
+              size: FontSize.fs18,
+              fontWeight: FontWeightManager.semiBold,
+            ),
+          ],
+        ),
+         SizedBox(height: AppSize.hs5),
+        Row(
+          children: [
+            Icon(
+              Icons.calendar_month,
+              size: AppSize.hs25,
+              color: AppColor.primary_color,
+            ),
+             SizedBox(width: AppSize.ws10),
+            MediumTextWidget(
+              text: date,
+              size: FontSize.fs16,
+              fontWeight: FontWeightManager.regular,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDeleteButton() {
+    return Icon(
+      Icons.delete,
+      size: 35,
+      color: AppColor.danger,
     );
   }
 }

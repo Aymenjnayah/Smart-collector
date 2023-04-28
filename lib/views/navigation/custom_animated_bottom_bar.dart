@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:smart_collector/config/app_colors.dart';
+import '../../models/BottomNavyBarItem.dart';
 
 class CustomAnimatedBottomBar extends StatelessWidget {
 
-  CustomAnimatedBottomBar({
+  const CustomAnimatedBottomBar({
     Key? key,
     this.selectedIndex = 0,
     this.showElevation = true,
@@ -155,21 +154,4 @@ class _ItemWidget extends StatelessWidget {
       ),
     );
   }
-}
-class BottomNavyBarItem {
-
-  BottomNavyBarItem({
-    required this.icon,
-    required this.title,
-    this.activeColor = Colors.green,
-    this.textAlign,
-    this.inactiveColor,
-  });
-
-  final Widget icon;
-  final Widget title;
-  final Color activeColor;
-  final Color? inactiveColor;
-  final TextAlign? textAlign;
-
 }

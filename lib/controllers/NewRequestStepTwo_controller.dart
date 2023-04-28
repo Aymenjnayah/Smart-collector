@@ -5,10 +5,10 @@ import 'package:get/state_manager.dart';
 import 'package:get/utils.dart';
 import 'package:smart_collector/routes/app_routes.dart';
 
-class NewRequestController extends GetxController {
+class NewRequestStepTwoController extends GetxController {
 
   forwardAction() {
-    Get.offNamed(AppRoutes.NewRequest2);
+    Get.offNamed(AppRoutes.NewRequest1);
   }
 }
 

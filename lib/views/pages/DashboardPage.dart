@@ -5,6 +5,7 @@ import 'package:smart_collector/views/pages/NotificationsPage.dart';
 import 'package:smart_collector/views/pages/LocationsPage.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/BottomNavyBarItem.dart';
 import '../navigation/custom_animated_bottom_bar.dart';
 
 class DashboardPage extends StatefulWidget {
