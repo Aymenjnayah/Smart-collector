@@ -54,7 +54,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     MediumTextWidget(
                       text: "Settings",
-                      color: AppColor.Subtitle,
+                      color: AppColors.Subtitle,
                       size: FontSize.fs18,
                     ),
                     SizedBox(width: 35),

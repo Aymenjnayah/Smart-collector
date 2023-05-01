@@ -19,8 +19,8 @@ class ExpandableTextWidget extends StatelessWidget {
     this.maxlines = 3,
     this.textSize = 16,
     this.linkSize = 16,
-    this.textColor = AppColor.Subtitle,
-    this.linkColor = AppColor.Subtitle,
+    this.textColor = AppColors.Subtitle,
+    this.linkColor = AppColors.Subtitle,
     this.textWeight = FontWeightManager.regular,
   });
 

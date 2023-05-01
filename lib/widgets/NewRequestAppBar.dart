@@ -4,10 +4,10 @@ import 'package:smart_collector/widgets/medium_text_widget.dart';
 import '../config/app_colors.dart';
 import '../config/values_manager.dart';
 
-class NewRequestAppBar extends StatelessWidget {
+class CustumAppBar extends StatelessWidget {
   final String title;
 
-  const NewRequestAppBar({Key? key, required this.title}) : super(key: key);
+  const CustumAppBar({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class NewRequestAppBar extends StatelessWidget {
             ),
           ),
           Text(
-             title,style: TextStyle(fontSize: 18,color: AppColor.Subtitle),
+             title,style: TextStyle(fontSize: 18,color: AppColors.Subtitle),
 
           ),
         ],

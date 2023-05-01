@@ -23,74 +23,77 @@ class SignInPage extends GetView<SignInController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(AppPadding.hp20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-
-              Column(
-                children: [
-                  SizedBox(
-                    height: AppSize.hs100,
-                  ),
-                  Text(
-                    "Welcome",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: FontSize.fs20 * 2,
-                      color: AppColor.primary_color,
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric( horizontal: AppPadding.hp20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Image.asset(
+                      "assets/images/login_image.png",
+                      fit: BoxFit.cover,
+                      width: Get.width,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: AppSize.hs10,
-                  ),
-                  const Text(
-                    "Log to your Account !",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
-                      color: AppColor.Subtitle,
+                    Text(
+                      "Welcome",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: FontSize.fs20 * 2,
+                        color: AppColors.primary_color,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  makeInput(hint: "Email", icon: const Icon(Icons.email)),
-                  buildSpacer(),
-                  makeInput(
-                    hint: "Password",
-                    icon: const Icon(Icons.lock),
-                  ),
-                  buildSpacer(),
-                  SubmitButton(
+                    SizedBox(
+                      height: AppSize.hs10,
+                    ),
+                    const Text(
+                      "Log to your Account !",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                        color: AppColors.Subtitle,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: AppSize.hs10,
+                ),
+                Column(
+                  children: [
+                    makeInput(hint: "Email", icon: const Icon(Icons.email)),
+                    buildSpacer(),
+                    makeInput(
+                      hint: "Password",
+                      icon: const Icon(Icons.lock),
+                    ),
+                    buildSpacer(),
+                    SubmitButton(
                       buttonText: "Sign in",
-                      onPressed: ()=>{
-                        controller.goToDashboard()
-                      },),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Does not have account?'),
-                  TextButton(
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(fontSize: FontSize.fs20),
+                      onPressed: () => {controller.goToDashboard()},
                     ),
-                    onPressed:()=>{
-                      controller.goToRegister()
-                    },
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-            ],
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Does not have account?'),
+                    TextButton(
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(fontSize: FontSize.fs20),
+                      ),
+                      onPressed: () => {controller.goToRegister()},
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+              ],
+            ),
           ),
         ),
       ),

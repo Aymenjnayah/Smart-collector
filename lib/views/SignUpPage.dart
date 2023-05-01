@@ -28,7 +28,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: FontSize.fs20 * 2,
-                      color: AppColor.primary_color,
+                      color: AppColors.primary_color,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -40,7 +40,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0,
-                      color: AppColor.Subtitle,
+                      color: AppColors.Subtitle,
                     ),
                   ),
                 ],

@@ -40,7 +40,7 @@ class TermsConditionsPage extends StatelessWidget {
                       ),
                       MediumTextWidget(
                         text: "Terms & conditions",
-                        color: AppColor.Subtitle,
+                        color: AppColors.Subtitle,
                         size: FontSize.fs18,
                       ),
                     ],

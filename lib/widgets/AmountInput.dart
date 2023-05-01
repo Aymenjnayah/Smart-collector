@@ -16,7 +16,7 @@ class AmountInput extends StatelessWidget {
       children: [
         MediumTextWidget(
           text: "Amount (L)",
-          color: AppColor.Subtitle,
+          color: AppColors.Subtitle,
           size: FontSize.fs18,
         ),
         SizedBox(height: AppSize.hs10),
@@ -27,7 +27,7 @@ class AmountInput extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: AppPadding.wp16),
                 height: AppSize.hs20 * 3,
                 decoration: BoxDecoration(
-                  color: AppColor.primary_color,
+                  color: AppColors.primary_color,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(AppSize.hs18),
                     bottomLeft: Radius.circular(AppSize.hs18),
@@ -35,7 +35,7 @@ class AmountInput extends StatelessWidget {
                 ),
                 child: Icon(
                   Icons.add,
-                  color: AppColor.whiteHoly,
+                  color: AppColors.whiteHoly,
                   size: AppSize.hs14 * 2,
                 ),
               ),
@@ -44,11 +44,11 @@ class AmountInput extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: AppPadding.wp16),
                 height: AppSize.hs20 * 3,
-                color: AppColor.greyOne,
+                color: AppColors.greyOne,
                 child: Center(
                   child: MediumTextWidget(
                     text: value,
-                    color: AppColor.Subtitle,
+                    color: AppColors.Subtitle,
                     size: FontSize.fs18,
                   ),
                 ),
@@ -59,7 +59,7 @@ class AmountInput extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: AppPadding.wp16),
                 height: AppSize.hs20 * 3,
                 decoration: BoxDecoration(
-                  color: AppColor.gold,
+                  color: AppColors.gold,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(AppSize.hs18),
                     bottomRight: Radius.circular(AppSize.hs18),
@@ -67,7 +67,7 @@ class AmountInput extends StatelessWidget {
                 ),
                 child: Icon(
                   Icons.remove,
-                  color: AppColor.whiteHoly,
+                  color: AppColors.whiteHoly,
                   size: AppSize.hs14 * 2,
                 ),
               ),
