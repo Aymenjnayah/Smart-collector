@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "937007958324",
+    "project_id": "smart-collector-92361",
+    "storage_bucket": "smart-collector-92361.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937007958324:android:8e3add4f9f07e8be4b7d61",
+        "android_client_info": {
+          "package_name": "com.example.smart_collector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937007958324-thap084moes8rf5rvtbpc080tnavqvna.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9-otodHBEmWe5vPTXtRlXEZays79oCSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937007958324-thap084moes8rf5rvtbpc080tnavqvna.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

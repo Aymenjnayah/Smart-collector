@@ -40,6 +40,10 @@ dependencies:
   flutter_svg: ^2.0.0+1
   google_fonts: ^2.1.0 
   expandable_text: ^2.3.0
+  firebase_core: ^2.10.0
+  cloud_firestore: ^4.5.3
+  firebase_auth: ^4.4.2
+  firebase_storage: ^11.1.1
 
 dev_dependencies:
   flutter_test:
