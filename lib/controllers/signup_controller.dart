@@ -12,7 +12,7 @@ class SignUpController extends GetxController {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneNumberController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
+  final passwordController = TextEditingController();
 
   // validation function for email input
   String? validateEmail(String? value) {
@@ -34,12 +34,9 @@ class SignUpController extends GetxController {
   }
 
   // validation function for confirm password input
-  String? validateConfirmPassword(String? value) {
+  String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'Password is required';
-    }
-    if (value != phoneNumberController.text) {
-      return 'Password must be at least 6 characters';
     }
     return null;
   }
@@ -65,7 +62,7 @@ class SignUpController extends GetxController {
       Get.snackbar('Error', passwordError);
       return;
     }
-    final confirmPasswordError = validateConfirmPassword(confirmPasswordController.text);
+    final confirmPasswordError = validatePassword(passwordController.text);
     if (confirmPasswordError != null) {
       Get.snackbar('Error', confirmPasswordError);
       return;
@@ -89,6 +86,7 @@ class SignUpController extends GetxController {
       // navigate to dashboard route
       Get.offNamed(AppRoutes.dashboard);
     } on FirebaseAuthException catch (e) {
+      print(e);
       if (e.code == 'weak-password') {
         Get.snackbar('Error', 'The password provided is too weak');
       } else if (e.code == 'email-already-in-use') {
@@ -106,7 +104,7 @@ class SignUpController extends GetxController {
     nameController.dispose();
     emailController.dispose();
     phoneNumberController.dispose();
-    confirmPasswordController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 }

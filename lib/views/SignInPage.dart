@@ -7,7 +7,7 @@ import 'package:smart_collector/widgets/SubmitButton.dart';
 import '../config/app_colors.dart';
 import '../widgets/custum_text_field.dart';
 
-class SignInPage extends GetView<SignInController> {
+class SignInPage extends StatelessWidget {
   static const registerRoute = '/register';
   static const dashboardRoute = '/dashboard';
 
@@ -21,78 +21,81 @@ class SignInPage extends GetView<SignInController> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = SignInController();
+    final SignInController controller = Get.put(SignInController());
 
     return Scaffold(
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(AppPadding.hp20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
 
-              Column(
-                children: [
-                  SizedBox(
-                    height: AppSize.hs100,
-                  ),
-                  Text(
-                    "Welcome",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: FontSize.fs20 * 2,
-                      color: AppColor.primary_color,
+                Column(
+                  children: [
+                    SizedBox(
+                      height: AppSize.hs100,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: AppSize.hs10,
-                  ),
-                  const Text(
-                    "Log to your Account !",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
-                      color: AppColor.Subtitle,
+                    Text(
+                      "Welcome",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: FontSize.fs20 * 2,
+                        color: AppColor.primary_color,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  makeInput(hint: "Email", icon: const Icon(Icons.email)),
-                  buildSpacer(),
-                  makeInput(
-                    hint: "Password",
-                    icon: const Icon(Icons.lock),
-                  ),
-                  buildSpacer(),
-                  SubmitButton(
+                    SizedBox(
+                      height: AppSize.hs10,
+                    ),
+                    const Text(
+                      "Log to your Account !",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                        color: AppColor.Subtitle,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    makeInput(hint: "Email", icon: const Icon(Icons.email),controller: controller.emailController),
+                    buildSpacer(),
+                    makeInput(
+                        hint: "Password",
+                        icon: const Icon(Icons.lock),
+                        controller: controller.passwordController
+                    ),
+                    buildSpacer(),
+                    SubmitButton(
                       buttonText: "Sign in",
                       onPressed: ()=>{
                         controller.handleSignIn()
                       },),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Does not have account?'),
-                  TextButton(
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(fontSize: FontSize.fs20),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Does not have account?'),
+                    TextButton(
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(fontSize: FontSize.fs20),
+                      ),
+                      onPressed:()=>{
+                        controller.goToRegister()
+                      },
                     ),
-                    onPressed:()=>{
-                      controller.goToRegister()
-                    },
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-            ],
+                  ],
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -9,8 +9,8 @@ class SignInController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  late TextEditingController emailController;
-  late TextEditingController passwordController;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   RxBool isEmailValid = false.obs;
   RxBool isPasswordValid = false.obs;
@@ -20,14 +20,7 @@ class SignInController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
-    emailController.addListener(() {
-      isEmailValid.value = GetUtils.isEmail(emailController.text);
-    });
-    passwordController.addListener(() {
-      isPasswordValid.value = passwordController.text.length >= 6;
-    });
+    print("onInit");
   }
 
   Future<void> handleSignIn() async {
