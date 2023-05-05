@@ -21,6 +21,8 @@ class SignInPage extends GetView<SignInController> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = SignInController();
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -68,7 +70,7 @@ class SignInPage extends GetView<SignInController> {
                   SubmitButton(
                       buttonText: "Sign in",
                       onPressed: ()=>{
-                        controller.goToDashboard()
+                        controller.handleSignIn()
                       },),
                 ],
               ),

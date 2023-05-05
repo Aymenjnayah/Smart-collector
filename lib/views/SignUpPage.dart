@@ -2,19 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_collector/config/app_colors.dart';
 import 'package:smart_collector/config/values_manager.dart';
+import 'package:smart_collector/controllers/signup_controller.dart';
 import 'package:smart_collector/widgets/SubmitButton.dart';
 import '../routes/app_routes.dart';
 import '../widgets/custum_text_field.dart';
 
 
 class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
+    final controller = SignUpController();
+
     return  Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -47,24 +52,24 @@ class SignUpPage extends StatelessWidget {
               ),
               Column(
                 children: [
-                  makeInput(hint: "Name",icon: Icon(Icons.person)),
-                  SizedBox(
+                  makeInput(hint: "Name",icon: const Icon(Icons.person)),
+                  const SizedBox(
                     height: 20.0,
                   ),
-                  makeInput(hint: "Email",icon: Icon(Icons.email)),
-                  SizedBox(
+                  makeInput(hint: "Email",icon: const Icon(Icons.email)),
+                  const SizedBox(
                     height: 20.0,
                   ),
                   makeInput(hint: "Phone number",icon: Icon(Icons.phone)),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
-                  makeInput(hint: "Password",icon: Icon(Icons.lock),obscureText: true),
-                  SizedBox(
+                  makeInput(hint: "Password",icon: const Icon(Icons.lock),obscureText: true),
+                  const SizedBox(
                     height: 20.0,
                   ),
                   SubmitButton(buttonText: "Sign up", onPressed: ()=>{
-
+                    controller.handleSignUp()
                   })
                 ],
               ),
