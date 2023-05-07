@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:smart_collector/config/base_controller.dart';
 import '../routes/app_routes.dart';
 
-class SignInController extends GetxController {
+class SignInController extends GetxController with BaseController{
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -24,7 +24,9 @@ class SignInController extends GetxController {
   }
 
   Future<void> handleSignIn() async {
+    showLoading();
     try {
+
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
       String uid = userCredential.user!.uid;
@@ -32,12 +34,16 @@ class SignInController extends GetxController {
       await _firestore.collection('users').doc(uid).get();
       Map<String, dynamic>? userData = userDoc.data() as Map<String, dynamic>?;
       String role = userData?['role'] ?? '';
+      print("role");
+      hideLoading();
       if (role == 'admin') {
-        Get.toNamed(AppRoutes.dashboard);
+        Get.offAllNamed(AppRoutes.adminDahboard);
       } else {
-        Get.snackbar('Error', 'You are not authorized to access this page');
+        Get.offAllNamed(AppRoutes.dashboard);
       }
     } on FirebaseAuthException catch (e) {
+      hideLoading();
+
       if (e.code == 'user-not-found') {
         Get.snackbar('Error', 'No user found for that email');
       } else if (e.code == 'wrong-password') {
@@ -46,6 +52,7 @@ class SignInController extends GetxController {
         Get.snackbar('Error', 'An error occurred while signing in');
       }
     } catch (e) {
+      hideLoading();
       Get.snackbar('Error', 'An error occurred while signing in');
     }
   }

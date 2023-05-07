@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smart_collector/routes/app_routes.dart';
 
 class NewRequestStepOneController extends GetxController {
   final selectedDateTime = "".obs;
@@ -28,6 +29,10 @@ class NewRequestStepOneController extends GetxController {
     final dateTimeString = dateTime.toString();
     dateController.value = TextEditingValue(text: dateTimeString);
     selectedDateTime.value = dateTimeString;
+  }
+
+  goToNextStep() {
+    Get.toNamed(AppRoutes.NewRequest2);
   }
 
 }

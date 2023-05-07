@@ -37,7 +37,7 @@ class ProfilePage extends StatelessWidget {
                     width: 200,
                     height: 45,
                     child: ElevatedButton(
-                      onPressed: ( ) {Get.offNamed(AppRoutes.EditAccount);},
+                      onPressed: ( ) {Get.toNamed(AppRoutes.EditAccount);},
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Color.fromARGB(255, 229, 250, 230),
                           side: BorderSide(width: 2.5, color: Colors.green),
@@ -45,7 +45,7 @@ class ProfilePage extends StatelessWidget {
                       child: Text(
                         "Edit Profile",
                         style: TextStyle(
-                            color: AppColor.primary_color,
+                            color: AppColors.primary_color,
                             fontFamily: 'poppins-regular'),
                       ),
                     ),
@@ -111,9 +111,9 @@ class ProfileMenuWidget extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: AppColor.primary_color.withOpacity(0.1),
+          color: AppColors.primary_color.withOpacity(0.1),
         ),
-        child: Icon(icon, color: AppColor.primary_color),
+        child: Icon(icon, color: AppColors.primary_color),
       ),
       title: Text(
         title,

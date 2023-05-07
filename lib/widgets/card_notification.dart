@@ -22,7 +22,7 @@ class CardNotification extends StatelessWidget {
         horizontal: AppSize.ws14,
       ),
       decoration: BoxDecoration(
-        color: AppColor.primary_white_color,
+        color: AppColors.primary_white_color,
         borderRadius: BorderRadius.circular(AppSize.hs14),
       ),
       child: Stack(
@@ -36,7 +36,7 @@ class CardNotification extends StatelessWidget {
                 //title
                 MediumTextWidget(
                   text: title,
-                  color: AppColor.Subtitle,
+                  color: AppColors.Subtitle,
                   fontWeight: FontWeightManager.semiBold,
                   size: FontSize.fs18,
                 ),
@@ -56,7 +56,7 @@ class CardNotification extends StatelessWidget {
             top: 0,
             child: Icon(
               Icons.notifications,
-              color: AppColor.primary_color,
+              color: AppColors.primary_color,
             ),
           ),
           //date of notificaion
@@ -66,7 +66,7 @@ class CardNotification extends StatelessWidget {
             child: MediumTextWidget(
               text: Date,
               size: FontSize.fs14,
-              color: AppColor.primary_color,
+              color: AppColors.primary_color,
             ),
           ),
         ],

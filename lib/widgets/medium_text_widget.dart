@@ -11,7 +11,7 @@ class MediumTextWidget extends StatelessWidget {
   FontWeight fontWeight;
   MediumTextWidget({
     Key? key,
-    this.color = AppColor.Subtitle,
+    this.color = AppColors.Subtitle,
     required this.text,
     this.size = 16,
     this.fontWeight = FontWeightManager.medium,

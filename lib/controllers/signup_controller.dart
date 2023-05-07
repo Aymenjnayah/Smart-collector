@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:smart_collector/config/base_controller.dart';
 import '../routes/app_routes.dart';
 
-class SignUpController extends GetxController {
+class SignUpController extends GetxController with BaseController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
@@ -45,7 +46,7 @@ class SignUpController extends GetxController {
   void handleSignUp() async {
     final name = nameController.text.trim();
     final email = emailController.text.trim();
-    final password = phoneNumberController.text.trim();
+    final password = phoneNumberController.text;
 
     // perform form validation
     if (!GetUtils.isLengthGreaterThan(name, 0)) {
@@ -67,7 +68,7 @@ class SignUpController extends GetxController {
       Get.snackbar('Error', confirmPasswordError);
       return;
     }
-
+    showLoading();
     // create user with email and password
     try {
       final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
@@ -80,13 +81,14 @@ class SignUpController extends GetxController {
       await _db.collection('users').doc(user?.uid).set({
         'name': name,
         'email': email,
-        'phone':phoneNumberController.value
+        'phone':phoneNumberController.text
       });
-
+      hideLoading();
       // navigate to dashboard route
       Get.offNamed(AppRoutes.dashboard);
     } on FirebaseAuthException catch (e) {
       print(e);
+      hideLoading();
       if (e.code == 'weak-password') {
         Get.snackbar('Error', 'The password provided is too weak');
       } else if (e.code == 'email-already-in-use') {
@@ -95,6 +97,7 @@ class SignUpController extends GetxController {
         Get.snackbar('Error', 'An error occurred while signing up. Please try again later');
       }
     } catch (e) {
+      hideLoading();
       Get.snackbar('Error', 'An error occurred while signing up. Please try again later');
     }
   }

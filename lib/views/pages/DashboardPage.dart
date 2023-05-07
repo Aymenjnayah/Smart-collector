@@ -42,7 +42,7 @@ class _DashboardPageState extends State<DashboardPage> {
         BottomNavyBarItem(
           icon: Icon(Icons.location_on),
           title: Text('Locations'),
-          activeColor: AppColor.primary_color,
+          activeColor: AppColors.primary_color,
           inactiveColor: _inactiveColor,
           textAlign: TextAlign.center,
         ),
@@ -51,14 +51,14 @@ class _DashboardPageState extends State<DashboardPage> {
           title: Text(
             'My News',
           ),
-          activeColor: AppColor.primary_color,
+          activeColor: AppColors.primary_color,
           inactiveColor: _inactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
           icon: Icon(Icons.person),
           title: Text('Profile'),
-          activeColor: AppColor.primary_color,
+          activeColor: AppColors.primary_color,
           inactiveColor: _inactiveColor,
           textAlign: TextAlign.center,
         ),

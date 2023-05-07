@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smart_collector/bindings/SplashBinding.dart';
+import 'package:smart_collector/bindings/SignInBindings.dart';
+import 'package:smart_collector/bindings/admin/admin_add_gift_binding.dart';
+import 'package:smart_collector/bindings/admin/admin_dashboard_binding.dart';
 import 'package:smart_collector/routes/app_pages.dart';
-import 'package:smart_collector/views/SplashPage.dart';
-
+import 'package:smart_collector/views/SignInPage.dart';
+import 'package:smart_collector/views/pages/admin/admin_add_gift_page.dart';
+import 'package:smart_collector/views/pages/admin/admin_dashboard_page.dart';
 import 'firebase_options.dart';
 
 void main() async  {
@@ -30,8 +33,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      initialBinding: SplashBinding(),
-      home: const SplashPage(),
+      initialBinding: AdminDashboardBinding(),
+      home:  AdminDashboardPage(),
       getPages: AppPages.pages,
     );
   }

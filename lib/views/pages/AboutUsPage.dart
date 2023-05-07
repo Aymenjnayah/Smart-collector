@@ -39,7 +39,7 @@ class AboutUsPage extends StatelessWidget {
                 ),
                 MediumTextWidget(
                   text: "About Us",
-                  color: AppColor.Subtitle,
+                  color: AppColors.Subtitle,
                   size: FontSize.fs18,
                 ),
                 SizedBox(width: 35, height: 35),
@@ -61,13 +61,13 @@ class AboutUsPage extends StatelessWidget {
                     SizedBox(height: 20),
                     MediumTextWidget(
                       text: "lorem ipsum",
-                      color: AppColor.Subtitle,
+                      color: AppColors.Subtitle,
                       size: FontSize.fs18,
                     ),
                     SizedBox(height: 10),
                     MediumTextWidget(
                       text: "lorem ipsum",
-                      color: AppColor.Subtitle,
+                      color: AppColors.Subtitle,
                       size: FontSize.fs18,
                     ),
                     SizedBox(height: 20),
@@ -77,7 +77,7 @@ class AboutUsPage extends StatelessWidget {
                         IconButton(
                           icon: Icon(
                             Icons.mail,
-                            color: AppColor.primary_color,
+                            color: AppColors.primary_color,
                           ),
                           onPressed: () {},
                         ),
@@ -85,7 +85,7 @@ class AboutUsPage extends StatelessWidget {
                         IconButton(
                           icon: Icon(
                             Icons.phone,
-                            color: AppColor.primary_color,
+                            color: AppColors.primary_color,
                           ),
                           onPressed: () {},
                         ),
@@ -93,7 +93,7 @@ class AboutUsPage extends StatelessWidget {
                         IconButton(
                           icon: Icon(
                             Icons.location_on,
-                            color: AppColor.primary_color,
+                            color: AppColors.primary_color,
                           ),
                           onPressed: () {},
                         ),

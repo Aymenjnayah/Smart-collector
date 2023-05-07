@@ -14,7 +14,7 @@ class ButtonWidget extends StatelessWidget {
       {super.key,
       required this.text,
       this.textSize = 20,
-      this.color = AppColor.Subtitle});
+      this.color = AppColors.Subtitle});
 
   @override
   Widget build(BuildContext context) {

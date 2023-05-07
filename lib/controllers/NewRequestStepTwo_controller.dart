@@ -1,14 +1,23 @@
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
-import 'package:get/utils.dart';
-import 'package:smart_collector/routes/app_routes.dart';
+import '../models/Gift.dart';
+import '../models/Item.dart';
+import '../routes/app_routes.dart';
 
 class NewRequestStepTwoController extends GetxController {
+  final items = <Gift>[].obs;
 
-  forwardAction() {
-    Get.offNamed(AppRoutes.NewRequest1);
+  @override
+  void onInit() {
+    super.onInit();
+    print("NewRequestStepTwoController");
+    // Sample data
+    items.addAll([
+
+    ]);
+  }
+
+  goToLastStep() {
+    Get.toNamed(AppRoutes.NewRequest3);
   }
 }
 

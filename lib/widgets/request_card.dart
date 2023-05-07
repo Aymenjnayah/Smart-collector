@@ -30,7 +30,7 @@ class RequestCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: AppColor.primary_color,
+            color: AppColors.primary_color,
             blurRadius: AppSize.hs5,
             offset: Offset.zero,
           ),
@@ -58,7 +58,7 @@ class RequestCard extends StatelessWidget {
         Icon(
           Icons.water_drop,
           size: AppSize.hs25,
-          color: AppColor.gold,
+          color: AppColors.gold,
         ),
          SizedBox(height: AppSize.hs5),
         MediumTextWidget(
@@ -86,7 +86,7 @@ class RequestCard extends StatelessWidget {
             Icon(
               Icons.swap_vert_circle,
               size: AppSize.hs25,
-              color: AppColor.primary_color,
+              color: AppColors.primary_color,
             ),
              SizedBox(width: AppSize.ws10),
             MediumTextWidget(
@@ -102,7 +102,7 @@ class RequestCard extends StatelessWidget {
             Icon(
               Icons.calendar_month,
               size: AppSize.hs25,
-              color: AppColor.primary_color,
+              color: AppColors.primary_color,
             ),
              SizedBox(width: AppSize.ws10),
             MediumTextWidget(
@@ -120,7 +120,7 @@ class RequestCard extends StatelessWidget {
     return Icon(
       Icons.delete,
       size: 35,
-      color: AppColor.danger,
+      color: AppColors.danger,
     );
   }
 }

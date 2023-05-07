@@ -25,7 +25,7 @@ class NotificationsPage extends StatelessWidget {
         ),
         child: Icon(
           CupertinoIcons.delete_solid,
-          color: AppColor.whiteHoly,
+          color: AppColors.whiteHoly,
           size: AppSize.hs25 * 3,
         ));
   }
@@ -48,7 +48,7 @@ class NotificationsPage extends StatelessWidget {
                   indicator: ShapeDecoration(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    color: AppColor.primary_color,
+                    color: AppColors.primary_color,
                   ),
                   tabs: [
                     Tab(
@@ -95,7 +95,7 @@ class NotificationsPage extends StatelessWidget {
                           SizedBox(height: AppSize.hs18),
                           MediumTextWidget(
                             text: "Our weekly newsletter",
-                            color: AppColor.Subtitle,
+                            color: AppColors.Subtitle,
                             size: FontSize.fs18,
                           ),
                           SizedBox(height: AppSize.hs18),

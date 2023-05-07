@@ -21,13 +21,13 @@ class NewRequestPageStepOne extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            NewRequestAppBar(
+            CustumAppBar(
               title: "New Request",
             ),
             SizedBox(height: AppSize.hs14),
             MediumTextWidget(
               text: "Set amount, appointment and address",
-              color: AppColor.gold,
+              color: AppColors.gold,
               size: FontSize.fs14,
             ),
             SizedBox(height: AppSize.hs14),
@@ -35,10 +35,10 @@ class NewRequestPageStepOne extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: AppSize.ws10 * 1.5,
+                  width: AppSize.ws10 * 2,
                   height: AppSize.ws10,
                   decoration: BoxDecoration(
-                    color: AppColor.primary_color,
+                    color: AppColors.primary_color,
                     borderRadius: BorderRadius.circular(AppPadding.hp20),
                   ),
                 ),
@@ -47,7 +47,7 @@ class NewRequestPageStepOne extends StatelessWidget {
                   width: AppSize.ws10,
                   height: AppSize.ws10,
                   decoration: BoxDecoration(
-                    color: AppColor.primary_color,
+                    color: AppColors.primary_color,
                     borderRadius: BorderRadius.circular(AppPadding.hp20),
                   ),
                 ),
@@ -58,12 +58,12 @@ class NewRequestPageStepOne extends StatelessWidget {
             Container(
               width: double.maxFinite,
               height: AppSize.hs5 / 2,
-              color: AppColor.primary_white_color,
+              color: AppColors.primary_white_color,
             ),
             SizedBox(height: AppSize.hs14),
             MediumTextWidget(
               text: "Address",
-              color: AppColor.Subtitle,
+              color: AppColors.Subtitle,
               size: FontSize.fs18,
             ),
             SizedBox(height: AppSize.hs10),
@@ -71,7 +71,7 @@ class NewRequestPageStepOne extends StatelessWidget {
               children: [
                 Icon(
                   Icons.location_pin,
-                  color: AppColor.grey,
+                  color: AppColors.grey,
                   size: AppSize.hs20 * 2,
                 ),
                 SizedBox(width: AppSize.ws10),
@@ -80,12 +80,12 @@ class NewRequestPageStepOne extends StatelessWidget {
                   children: [
                     MediumTextWidget(
                       text: "39 Ali belhawen street",
-                      color: AppColor.Subtitle,
+                      color: AppColors.Subtitle,
                       size: FontSize.fs16,
                     ),
                     MediumTextWidget(
                       text: "Eljem , Mahdia",
-                      color: AppColor.Subtitle,
+                      color: AppColors.Subtitle,
                       size: FontSize.fs16,
                     ),
                   ],
@@ -96,7 +96,7 @@ class NewRequestPageStepOne extends StatelessWidget {
             Container(
               width: double.maxFinite,
               height: AppSize.hs5 / 2,
-              color: AppColor.primary_white_color,
+              color: AppColors.primary_white_color,
             ),
             SizedBox(height: AppSize.hs14),
             Padding(
@@ -105,13 +105,13 @@ class NewRequestPageStepOne extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.location_pin,
-                      color: AppColor.primary_color,
+                      color: AppColors.primary_color,
                       size: AppSize.hs20 * 2,
                     ),
                     SizedBox(width: AppSize.ws10),
                     MediumTextWidget(
                       text: "Change Address",
-                      color: AppColor.primary_color,
+                      color: AppColors.primary_color,
                       size: FontSize.fs18,
                     ),
                   ],
@@ -120,12 +120,12 @@ class NewRequestPageStepOne extends StatelessWidget {
             Container(
               width: double.maxFinite,
               height: AppSize.hs5 / 2,
-              color: AppColor.primary_white_color,
+              color: AppColors.primary_white_color,
             ),
             SizedBox(height: AppSize.hs14),
             MediumTextWidget(
               text: "Appointment",
-              color: AppColor.Subtitle,
+              color: AppColors.Subtitle,
               size: FontSize.fs18,
             ),
             SizedBox(height: AppSize.hs10),
@@ -138,7 +138,9 @@ class NewRequestPageStepOne extends StatelessWidget {
                   icon: const Icon(Icons.calendar_month)),
             ),
             SizedBox(height: AppSize.hs20),
-            SubmitButton(buttonText: "Next step", onPressed: () => {})
+            SubmitButton(buttonText: "Next step", onPressed: () => {
+              controller.goToNextStep()
+            })
           ],
         ),
       )),

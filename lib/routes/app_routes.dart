@@ -15,11 +15,18 @@ class AppRoutes {
   static const ForgetPassword = '/ForgetPassword';
   static const NewRequest1 = '/NewRequest1';
   static const NewRequest2 = '/NewRequest2';
+  static const NewRequest3 = '/NewRequest3';
   static const RequestDetails = '/RequestDetails';
   static const VerifyAccount = '/VerifyAccount';
   static const Settings = '/Settings';
-    static const AboutUs = '/AboutUs';
-      static const Termsconditions = '/Termsconditions';
+  static const AboutUs = '/AboutUs';
+  static const Termsconditions = '/Termsconditions';
 
+  static const adminDahboard = '/admin-dashboard';
+  static const users = '/users';
+  static const adminRequests = '/admin-requests';
+  static const adminCollections = '/admin-collections';
+  static const adminScanner = '/admin-scanner';
+  static const adminAddGift = '/admin-add-gift';
 
 }

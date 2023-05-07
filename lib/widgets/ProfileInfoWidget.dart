@@ -32,7 +32,7 @@ class ProfileInfoWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: AppColor.primary_color,
+            color: AppColors.primary_color,
             blurRadius: AppSize.hs5,
             offset: Offset(0, 0),
           ),
@@ -44,7 +44,7 @@ class ProfileInfoWidget extends StatelessWidget {
           Row(
             children: [
               CircleAvatar(
-                backgroundColor: AppColor.primary_color,
+                backgroundColor: AppColors.primary_color,
                 radius: 25,
                 backgroundImage: AssetImage(image),
               ),
@@ -64,7 +64,7 @@ class ProfileInfoWidget extends StatelessWidget {
                   Icon(
                     Icons.attach_money_rounded,
                     size: AppSize.hs25,
-                    color: AppColor.primary_color,
+                    color: AppColors.primary_color,
                   ),
                   SizedBox(width: AppSize.ws5),
                   MediumTextWidget(
@@ -80,7 +80,7 @@ class ProfileInfoWidget extends StatelessWidget {
                   Icon(
                     Icons.water_drop,
                     size: AppSize.hs25,
-                    color: AppColor.gold,
+                    color: AppColors.gold,
                   ),
                   SizedBox(width: AppSize.ws5),
                   MediumTextWidget(
