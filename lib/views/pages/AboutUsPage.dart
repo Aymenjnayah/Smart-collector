@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:smart_collector/controllers/AboutUsController.dart';
 import 'package:smart_collector/widgets/medium_text_widget.dart';
 import '../../config/app_colors.dart';
 import '../../config/values_manager.dart';
@@ -11,38 +11,34 @@ class AboutUsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = AboutUsController();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           children: [
-            SizedBox(height: 20),
+            SizedBox(height: 40),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 35,
-                  height: 35,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.grey.withOpacity(0.1),
-                  ),
-                  child: IconButton(
-                    onPressed:() {
- Get.offNamed(AppRoutes.profile);                    },
-                    icon: Icon(
-                      Icons.chevron_left,
-                      size: 30.0,
-                      color: Color.fromARGB(255, 81, 78, 78),
-                    ),
+                IconButton(
+                  onPressed: () {
+                    Get.offNamed(AppRoutes.profile);
+                  },
+                  icon: Icon(
+                    Icons.chevron_left,
+                    size: 30.0,
+                    color: Color.fromARGB(255, 81, 78, 78),
                   ),
                 ),
+                Spacer(),
                 MediumTextWidget(
                   text: "About Us",
                   color: AppColors.Subtitle,
-                  size: FontSize.fs18,
+                  size: FontSize.fs24,
                 ),
-                SizedBox(width: 35, height: 35),
+                Spacer(),
+                SizedBox(width: 30, height: 30),
               ],
             ),
             SizedBox(height: AppSize.hs14),
@@ -51,26 +47,40 @@ class AboutUsPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      height: 200,
-                      width: double.infinity,
+                      height: 150,
+                      width: 150,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: Image.asset('assets/images/logo.png', width: 300),
+                      child: Image.asset('assets/images/logo.png'),
+                    ),
+                    SizedBox(height: 30),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        "The App is a revolutionary solution to save the earth and encourage people to change their habits. With numerous benefits and the opportunity to earn points for every sustainable change, our app motivates users to take actions that positively impact the environment.",
+                        style: TextStyle(
+                          color: AppColors.Subtitle,
+                          fontSize: FontSize.fs18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                     SizedBox(height: 20),
-                    MediumTextWidget(
-                      text: "lorem ipsum",
-                      color: AppColors.Subtitle,
-                      size: FontSize.fs18,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        "Join us in making a difference and building a greener future!",
+                        style: TextStyle(
+                          color: AppColors.Subtitle,
+                          fontSize: FontSize.fs18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                    SizedBox(height: 10),
-                    MediumTextWidget(
-                      text: "lorem ipsum",
-                      color: AppColors.Subtitle,
-                      size: FontSize.fs18,
-                    ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 40),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -79,27 +89,34 @@ class AboutUsPage extends StatelessWidget {
                             Icons.mail,
                             color: AppColors.primary_color,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.goToSendEmail();
+                          },
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 30),
                         IconButton(
                           icon: Icon(
                             Icons.phone,
                             color: AppColors.primary_color,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.goToPhoneCall();
+
+                          },
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 30),
                         IconButton(
                           icon: Icon(
                             Icons.location_on,
                             color: AppColors.primary_color,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.goToMaPosition();
+                          },
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 40),
                   ],
                 ),
               ),

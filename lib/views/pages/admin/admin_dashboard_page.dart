@@ -9,28 +9,20 @@ class AdminDashboardPage extends StatelessWidget {
     final controller = AdminDashboardController();
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(86),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Color(0xFF373737),
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10),
-            ),
+      appBar: AppBar(
+        title: const Text(
+          "Admin Dashboard",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
           ),
-          child: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            centerTitle: true,
-            title: Text(
-              "Admin Dashboard",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
-            ),
+        ),
+        backgroundColor: const Color(0xFF373737),
+        elevation: 0,
+        centerTitle: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(10),
           ),
         ),
       ),
@@ -41,68 +33,68 @@ class AdminDashboardPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildOption(
+                buildOption(
                   "Collections",
                   "#1EB15A",
                   "assets/images/collections_icon.png",
-                  () {
-                    controller.goToNextScreen(0);
-                  },
+                      () => controller.goToNextScreen(0),
                 ),
-                _buildOption(
+                buildOption(
                   "Users",
                   "#FFB109",
                   "assets/images/users_icon.png",
-                  () {
-                    controller.goToNextScreen(1);
-                  },
+                      () => controller.goToNextScreen(1),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildOption(
+                buildOption(
                   "Requests",
                   "#373737",
                   "assets/images/requests_icon.png",
-                  () {
-                    controller.goToNextScreen(2);
-                  },
+                      () => controller.goToNextScreen(2),
                 ),
-                _buildOption(
+                buildOption(
                   "QR Scanner",
                   "#F7A48B",
                   "assets/images/scanner_icon.png",
-                  () {
-                    controller.goToNextScreen(3);
-                  },
+                      () => controller.goToNextScreen(3),
                 ),
               ],
             ),
           ],
         ),
       ),
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(bottom: 20),
+        child: FloatingActionButton(
+          onPressed: () {
+            controller.handleLogout();
+          },
+          child: Icon(Icons.logout),
+        ),
+      ),
     );
   }
 
-  Widget _buildOption(
-    String title,
-    String colorHex,
-    String imagePath,
-    VoidCallback onTap,
-  ) {
+  Widget buildOption(
+      String title,
+      String colorHex,
+      String imagePath,
+      VoidCallback onTap,
+      ) {
+    final color = Color(int.parse(colorHex.substring(1), radix: 16) + 0xFF000000);
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
         width: 160,
         height: 132,
         decoration: BoxDecoration(
-          color:
-              Color(int.parse(colorHex.substring(1), radix: 16) + 0xFF000000),
+          color: color,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -113,9 +105,7 @@ class AdminDashboardPage extends StatelessWidget {
               width: 64,
               height: 64,
             ),
-            SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             Text(
               title,
               style: const TextStyle(

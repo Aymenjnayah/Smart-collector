@@ -27,8 +27,9 @@ class SignInController extends GetxController with BaseController{
     showLoading();
     try {
 
+
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text);
+          email: emailController.text.toString(), password: passwordController.text.toString());
       String uid = userCredential.user!.uid;
       DocumentSnapshot userDoc =
       await _firestore.collection('users').doc(uid).get();
@@ -66,5 +67,9 @@ class SignInController extends GetxController with BaseController{
     emailController.dispose();
     passwordController.dispose();
     super.onClose();
+  }
+
+  goToForgotPassword() {
+    Get.toNamed(AppRoutes.ForgetPassword);
   }
 }

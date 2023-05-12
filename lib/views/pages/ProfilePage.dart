@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_collector/controllers/profile_controller.dart';
 import 'package:smart_collector/routes/app_routes.dart';
-
 import '../../config/app_colors.dart';
+import '../../widgets/profile_menu_item.dart';
 
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final ProfileController controller = Get.put(ProfileController());
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -16,37 +20,46 @@ class ProfilePage extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  SizedBox(
-                    width: 120,
-                    height: 120,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: Image.asset(
-                        'assets/images/aymen.jpg',
-                      ),
-                    ),
-                  ),
+                  Obx(() {
+                    final currentUser = controller.currentUser.value;
+                    return CircleAvatar(
+                      radius: 70,
+                      backgroundImage: NetworkImage(currentUser.avatar),
+                    );
+                  }),
                   const SizedBox(height: 10),
-                  const Text("Aymen Jnayah"),
-                  const Text("contactaymenjnayah@gmail.com",
+                  Obx(() {
+                    final currentUser = controller.currentUser.value;
+                    return Text(currentUser.name);
+                  }),
+                  Obx(() {
+                    final currentUser = controller.currentUser.value;
+                    return Text(
+                      currentUser.email,
                       style: TextStyle(
                         color: Colors.grey,
-                      )),
+                      ),
+                    );
+                  }),
                   const SizedBox(height: 20),
                   SizedBox(
                     width: 200,
                     height: 45,
                     child: ElevatedButton(
-                      onPressed: ( ) {Get.toNamed(AppRoutes.EditAccount);},
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.EditAccount);
+                      },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 229, 250, 230),
-                          side: BorderSide(width: 2.5, color: Colors.green),
-                          shape: const StadiumBorder()),
-                      child: Text(
+                        backgroundColor: Color.fromARGB(255, 229, 250, 230),
+                        side: BorderSide(width: 2.5, color: Colors.green),
+                        shape: const StadiumBorder(),
+                      ),
+                      child: const Text(
                         "Edit Profile",
                         style: TextStyle(
-                            color: AppColors.primary_color,
-                            fontFamily: 'poppins-regular'),
+                          color: AppColors.primary_color,
+                          fontFamily: 'poppins-regular',
+                        ),
                       ),
                     ),
                   ),
@@ -56,27 +69,33 @@ class ProfilePage extends StatelessWidget {
                   ProfileMenuWidget(
                     title: "Settings",
                     icon: Icons.settings,
-                    onPress: () {Get.offNamed(AppRoutes.Settings);},
+                    onPress: () {
+                      Get.toNamed(AppRoutes.Settings);
+                    },
                   ),
                   ProfileMenuWidget(
                     title: "About Us",
                     icon: Icons.question_answer,
-                    onPress: () {Get.offNamed(AppRoutes.AboutUs);},
+                    onPress: () {
+                      Get.toNamed(AppRoutes.AboutUs);
+                    },
                   ),
                   ProfileMenuWidget(
                     title: "Terms & conditions",
                     icon: Icons.book,
-                    onPress: () {Get.offNamed(AppRoutes.Termsconditions);},
+                    onPress: () {
+                      Get.toNamed(AppRoutes.Termsconditions);
+                    },
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   ProfileMenuWidget(
                     title: "Log out",
                     icon: Icons.logout,
                     textColor: Colors.red,
                     endIcon: false,
-                    onPress: () {},
+                    onPress: () {
+                      controller.logout();
+                    },
                   ),
                 ],
               ),
@@ -88,52 +107,5 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-class ProfileMenuWidget extends StatelessWidget {
-  const ProfileMenuWidget({
-    required this.title,
-    required this.icon,
-    required this.onPress,
-    this.endIcon = true,
-    this.textColor,
-  });
-  final String title;
-  final IconData icon;
-  final VoidCallback onPress;
-  final bool endIcon;
-  final Color? textColor;
 
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      onTap: onPress,
-      leading: Container(
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: AppColors.primary_color.withOpacity(0.1),
-        ),
-        child: Icon(icon, color: AppColors.primary_color),
-      ),
-      title: Text(
-        title,
-        style: GoogleFonts.poppins(fontSize: 16),
-      ),
-      trailing: endIcon
-          ? Container(
-              width: 35,
-              height: 35,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Colors.grey.withOpacity(0.1),
-              ),
-              child: Icon(
-                Icons.chevron_right,
-                size: 30.0,
-                color: Color.fromARGB(255, 81, 78, 78),
-              ),
-            )
-          : null,
-    );
-  }
-}
+

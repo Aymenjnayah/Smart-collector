@@ -31,7 +31,6 @@ class SignInPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-
                 Column(
                   children: [
                     SizedBox(
@@ -57,37 +56,46 @@ class SignInPage extends StatelessWidget {
                         color: AppColors.Subtitle,
                       ),
                     ),
+                    buildSpacer(),
                   ],
                 ),
                 Column(
                   children: [
-                    makeInput(hint: "Email", icon: const Icon(Icons.email),controller: controller.emailController),
+                    makeInput(
+                      hint: "Email",
+                      icon: const Icon(Icons.email),
+                      controller: controller.emailController,
+                    ),
                     buildSpacer(),
                     makeInput(
-                        hint: "Password",
-                        icon: const Icon(Icons.lock),
-                        controller: controller.passwordController
+                      hint: "Password",
+                      icon: const Icon(Icons.lock),
+                      controller: controller.passwordController,
                     ),
                     buildSpacer(),
                     SubmitButton(
                       buttonText: "Sign in",
-                      onPressed: ()=>{
-                        controller.handleSignIn()
-                      },),
+                      onPressed: () => {controller.handleSignIn()},
+                    ),
+                    TextButton(
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(fontSize: FontSize.fs20),
+                      ),
+                      onPressed: () => {controller.goToForgotPassword()},
+                    ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Does not have account?'),
+                    const Text('Does not have an account?'),
                     TextButton(
                       child: Text(
                         'Sign up',
                         style: TextStyle(fontSize: FontSize.fs20),
                       ),
-                      onPressed:()=>{
-                        controller.goToRegister()
-                      },
+                      onPressed: () => {controller.goToRegister()},
                     ),
                   ],
                 ),

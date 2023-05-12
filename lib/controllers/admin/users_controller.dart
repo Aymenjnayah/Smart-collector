@@ -5,7 +5,7 @@ import 'package:smart_collector/config/base_controller.dart';
 import '../../models/user.dart';
 
 class UsersController extends GetxController with BaseController {
-  final users = <User>[].obs;
+  final users = <UserModel>[].obs;
   final searchText = ''.obs;
 
   @override
@@ -17,7 +17,7 @@ class UsersController extends GetxController with BaseController {
   void loadUsers() async {
     showLoading();
     final snapshot = await FirebaseFirestore.instance.collection('users').get();
-    users.assignAll(snapshot.docs.map((doc) => User.fromMap(doc.data())).toList());
+    users.assignAll(snapshot.docs.map((doc) => UserModel.fromMap(doc.data())).toList());
     hideLoading();
   }
 
@@ -25,7 +25,7 @@ class UsersController extends GetxController with BaseController {
     searchText.value = text;
   }
 
-  List<User> get filteredUsers {
+  List<UserModel> get filteredUsers {
     if (searchText.value.isEmpty) {
       return users;
     } else {

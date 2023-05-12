@@ -5,21 +5,22 @@ import 'package:smart_collector/widgets/SubmitButton.dart';
 import '../../widgets/CustomTextField.dart';
 
 class LocationsPage extends StatelessWidget {
-  LocationsPage({super.key});
+  LocationsController controller = LocationsController();
+
+   LocationsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = LocationsController();
 
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
-                SizedBox(height: 20,),
-                Text(
+                const SizedBox(height: 20,),
+                const Text(
                   "Set your location",
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -27,7 +28,7 @@ class LocationsPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 CustomTextField(
                   title: 'Select City',
                   controller: controller.cityController,

@@ -23,7 +23,7 @@ class AdminRequestsController extends GetxController with BaseController {
     final requestList = requests.docs.map((doc) {
       final request = RequestModel.fromMap(doc.data());
       final userDoc = users.docs.firstWhere((userDoc) => userDoc.id == request.userUid);
-      final user = User.fromMap(userDoc.data());
+      final user = UserModel.fromMap(userDoc.data());
       return request.copyWith(user: user);
     }).toList();
 

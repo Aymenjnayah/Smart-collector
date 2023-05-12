@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:smart_collector/routes/app_routes.dart';
 
@@ -17,6 +18,11 @@ class AdminDashboardController extends GetxController {
         Get.toNamed(AppRoutes.adminScanner);
         break;
     }
+  }
+
+  void handleLogout() {
+    FirebaseAuth.instance.signOut();
+    Get.offAllNamed(AppRoutes.login);
   }
 
 

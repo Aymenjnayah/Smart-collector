@@ -6,7 +6,7 @@ class RequestModel {
   final String gift;
   final String date;
   final String userUid;
-  final User user;
+  final UserModel user;
 
   RequestModel({
     required this.id,
@@ -24,7 +24,7 @@ class RequestModel {
       gift: map['gift'] ?? '',
       date: map['date'] ?? '',
       userUid: map['userUid'] ?? '',
-      user: User.fromMap(map['user']),
+      user: UserModel.fromMap(map['user']),
     );
   }
 
@@ -45,7 +45,7 @@ class RequestModel {
     String? gift,
     String? date,
     String? userUid,
-    User? user,
+    UserModel? user,
   }) {
     return RequestModel(
       id: id ?? this.id,
