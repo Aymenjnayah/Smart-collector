@@ -1,4 +1,5 @@
 import 'package:smart_collector/config/app_colors.dart';
+import 'package:smart_collector/views/pages/AddressListPage.dart';
 import 'package:smart_collector/views/pages/ProfilePage.dart';
 import 'package:smart_collector/views/pages/home_page.dart';
 import 'package:smart_collector/views/pages/NotificationsPage.dart';
@@ -69,7 +70,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget getBody() {
     List<Widget> pages = [
       HomePage(),
-      LocationsPage(),
+      AddressListPage(),
       NotificationsPage(),
       ProfilePage(),
     ];

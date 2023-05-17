@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
+import 'package:smart_collector/bindings/AddressListBinding.dart';
 import 'package:smart_collector/bindings/admin/admin_add_gift_binding.dart';
 import 'package:smart_collector/bindings/admin/admin_collection_binding.dart';
 import 'package:smart_collector/bindings/admin/admin_dashboard_binding.dart';
 import 'package:smart_collector/bindings/admin/admin_requests_binding.dart';
 import 'package:smart_collector/bindings/admin/users_binding.dart';
 import 'package:smart_collector/views/pages/AboutUsPage.dart';
+import 'package:smart_collector/views/pages/AddressListPage.dart';
 import 'package:smart_collector/views/pages/SettingsPage.dart';
 import 'package:smart_collector/views/pages/TermsConditionsPage.dart';
 import 'package:smart_collector/views/pages/admin/admin_add_gift_page.dart';
@@ -171,6 +173,11 @@ class AppPages {
       name: AppRoutes.adminAddGift,
       page: () => AdminAddGiftPage(),
       binding: AdminAddGiftBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.listAddress,
+      page: () => AddressListPage(),
+      binding: AddressListBinding(),
     ),
   ];
 }

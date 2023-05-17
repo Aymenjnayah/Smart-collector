@@ -13,24 +13,22 @@ class LocationsController extends GetxController  with BaseController{
 
   addAddress() async {
     showLoading();
-    await _getCurrentLocation(); // Call _getCurrentLocation to fetch the current location
+    await _getCurrentLocation();
 
     if (!_validateFields()) {
       hideLoading();
-      // Show snackbar with an error message if any field is empty
       Get.snackbar('Error', 'Please fill in all fields');
       return;
     }
 
-    // Store the address in the Firestore document
     String uid = FirebaseAuth.instance.currentUser?.uid ?? '';
-    DocumentReference addressRef = FirebaseFirestore.instance
+
+    CollectionReference addressCollection = FirebaseFirestore.instance
         .collection('users')
         .doc(uid)
-        .collection('addresses')
-        .doc('user_address');
+        .collection('address');
 
-    await addressRef.set({
+    DocumentReference docRef = await addressCollection.add({
       'city': cityController.text,
       'town': townController.text,
       'address': addressController.text,
@@ -40,9 +38,11 @@ class LocationsController extends GetxController  with BaseController{
     });
 
     hideLoading();
-    // Show a success message
-    Get.snackbar('Success', 'Address added/updated successfully');
+    String addedDocumentId = docRef.id;
+    Get.back(result: addedDocumentId);
   }
+
+
 
   bool _validateFields() {
     return cityController.text.isNotEmpty &&

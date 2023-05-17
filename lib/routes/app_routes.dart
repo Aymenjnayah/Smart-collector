@@ -28,5 +28,6 @@ class AppRoutes {
   static const adminCollections = '/admin-collections';
   static const adminScanner = '/admin-scanner';
   static const adminAddGift = '/admin-add-gift';
+  static const listAddress = '/list-address';
 
 }
