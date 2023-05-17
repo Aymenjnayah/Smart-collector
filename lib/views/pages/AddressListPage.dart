@@ -18,7 +18,7 @@ class AddressListPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
-              Center(
+              const Center(
                 child: Text(
                   "Your location",
                   textAlign: TextAlign.center,
@@ -34,7 +34,7 @@ class AddressListPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Saved locations",
                       textAlign: TextAlign.right,
                       style: TextStyle(
@@ -56,11 +56,11 @@ class AddressListPage extends StatelessWidget {
                             width: 3,
                           ),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Icon(
                             Icons.add,
                             color: Colors.black,
-                            size: 20,
+                            size: 35,
                           ),
                         ),
                       ),
@@ -72,14 +72,38 @@ class AddressListPage extends StatelessWidget {
               const SizedBox(height: 20),
               Obx(
                     () => Expanded(
-                  child: ListView.builder(
+                  child: controller.addressList.isEmpty
+                      ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const  [
+                        Icon(
+                          Icons.location_off,
+                          size: 60,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'No addresses found',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                      : ListView.builder(
                     itemCount: controller.addressList.length,
                     itemBuilder: (context, index) {
                       return AddressCard(
                         city: "${controller.addressList[index].city}L",
                         town: controller.addressList[index].town.toString(),
-                        street:
-                        controller.addressList[index].address.toString(),
+                        street: controller.addressList[index].address.toString(),
+                        onClick: () => {
+                          controller.removeAddress(controller.addressList[index].uid!)
+                        },
                       );
                     },
                   ),

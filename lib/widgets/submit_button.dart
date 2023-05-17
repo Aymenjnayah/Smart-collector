@@ -11,3 +11,15 @@ final ButtonStyle buttonPrimary = ElevatedButton.styleFrom(
     ),
   ),
 );
+
+
+final ButtonStyle buttonDark = ElevatedButton.styleFrom(
+  minimumSize: const Size.fromHeight(50),
+  primary: AppColors.blackColor,
+  elevation: 0,
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(10),
+    ),
+  ),
+);

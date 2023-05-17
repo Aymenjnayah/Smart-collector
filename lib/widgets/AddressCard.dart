@@ -9,20 +9,21 @@ class AddressCard extends StatelessWidget {
   final String city;
   final String town;
   final String street;
+  final VoidCallback onClick;
 
   const AddressCard({
     Key? key,
     required this.city,
     required this.town,
     required this.street,
+    required this.onClick
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-      padding:  EdgeInsets.symmetric(
-        vertical: AppPadding.hp20,
+      padding: EdgeInsets.symmetric(
         horizontal: AppPadding.wp14,
       ),
       decoration: BoxDecoration(
@@ -41,39 +42,40 @@ class AddressCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              _buildLiters(),
+              _locationIcon(),
               _buildDivider(),
               _buildGiftAndDate(),
             ],
           ),
-          _buildDeleteButton(),
+          _buildDeleteButton(() {
+            onClick();
+          }),
         ],
       ),
     );
   }
 
-  Widget _buildLiters() {
+  Widget _locationIcon() {
     return Column(
       children: [
-        Icon(
-          Icons.water_drop,
-          size: AppSize.hs25,
-          color: AppColors.gold,
-        ),
-        SizedBox(height: AppSize.hs5),
-        MediumTextWidget(
-          text: city,
-          size: FontSize.fs20,
-          fontWeight: FontWeightManager.semiBold,
+        Image.asset(
+          "assets/images/location_icon.png",
+          width: 30,
+          height: 30,
         ),
       ],
     );
   }
 
   Widget _buildDivider() {
-    return  SizedBox(
-      width: AppSize.ws20,
-      child: const VerticalDivider(color: Colors.grey),
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      // Set the desired horizontal margin
+      child: SizedBox(
+        width: AppSize.ws20,
+        height: 80,
+        child: const VerticalDivider(color: Colors.grey),
+      ),
     );
   }
 
@@ -81,46 +83,29 @@ class AddressCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Icon(
-              Icons.swap_vert_circle,
-              size: AppSize.hs25,
-              color: AppColors.primary_color,
-            ),
-            SizedBox(width: AppSize.ws10),
-            MediumTextWidget(
-              text: town,
-              size: FontSize.fs18,
-              fontWeight: FontWeightManager.semiBold,
-            ),
-          ],
+        MediumTextWidget(
+          text: "$city $town",
+          size: FontSize.fs16,
+          fontWeight: FontWeightManager.semiBold,
         ),
         SizedBox(height: AppSize.hs5),
-        Row(
-          children: [
-            Icon(
-              Icons.calendar_month,
-              size: AppSize.hs25,
-              color: AppColors.primary_color,
-            ),
-            SizedBox(width: AppSize.ws10),
-            MediumTextWidget(
-              text: street,
-              size: FontSize.fs16,
-              fontWeight: FontWeightManager.regular,
-            ),
-          ],
+        MediumTextWidget(
+          text: street,
+          size: FontSize.fs16,
+          fontWeight: FontWeightManager.regular,
         ),
       ],
     );
   }
 
-  Widget _buildDeleteButton() {
-    return Icon(
-      Icons.delete,
-      size: 35,
-      color: AppColors.danger,
+  Widget _buildDeleteButton(VoidCallback onPressed) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Icon(
+        Icons.delete,
+        size: 35,
+        color: AppColors.danger,
+      ),
     );
   }
 }

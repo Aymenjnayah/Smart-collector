@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Address {
+  String? uid; // UID attribute added
   String? city;
   String? town;
   String? address;
@@ -9,6 +10,7 @@ class Address {
   double? longitude;
 
   Address({
+    this.uid,
     this.city,
     this.town,
     this.address,
@@ -19,6 +21,7 @@ class Address {
 
   factory Address.fromMap(Map<String, dynamic> map) {
     return Address(
+      uid: map['uid'] as String?, // UID included
       city: map['city'] as String?,
       town: map['town'] as String?,
       address: map['address'] as String?,
@@ -32,6 +35,7 @@ class Address {
     final data = snapshot.data() as Map<String, dynamic>?;
 
     return Address(
+      uid: snapshot.id, // UID assigned from snapshot ID
       city: data?['city'] as String?,
       town: data?['town'] as String?,
       address: data?['address'] as String?,
@@ -43,6 +47,7 @@ class Address {
 
   Map<String, dynamic> toMap() {
     return {
+      'uid': uid,
       'city': city,
       'town': town,
       'address': address,

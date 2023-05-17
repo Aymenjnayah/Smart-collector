@@ -40,4 +40,21 @@ class AddressListController extends GetxController with BaseController {
       }
     });
   }
+
+  void removeAddress(String uid) {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
+      final userId = currentUser.uid;
+      final usersCollection = FirebaseFirestore.instance.collection('users');
+      final userDoc = usersCollection.doc(userId);
+      final addressCollection = userDoc.collection('address');
+
+      addressCollection.doc(uid).delete().then((value) {
+        addressList.removeWhere((address) => address.uid == uid);
+      }).catchError((error) {
+        // Handle error if necessary
+      });
+    }
+  }
+
 }

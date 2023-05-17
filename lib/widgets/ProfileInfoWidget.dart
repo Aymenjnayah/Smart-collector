@@ -11,7 +11,7 @@ class ProfileInfoWidget extends StatelessWidget {
   final String liters;
   final String image;
 
-  ProfileInfoWidget({
+  ProfileInfoWidget({super.key,
     required this.name,
     required this.points,
     required this.liters,
@@ -46,7 +46,7 @@ class ProfileInfoWidget extends StatelessWidget {
               CircleAvatar(
                 backgroundColor: AppColors.primary_color,
                 radius: 25,
-                backgroundImage: AssetImage(image),
+                backgroundImage: NetworkImage(image),
               ),
               SizedBox(width: AppSize.ws10),
               MediumTextWidget(

@@ -47,6 +47,7 @@ class LocationsPage extends StatelessWidget {
                   isMultiline: true,
                 ),
                 SubmitButton(
+                  isDarkBackground: true,
                     buttonText: "Add New Adress",
                     onPressed: () => {controller.addAddress()})
               ],
