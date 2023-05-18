@@ -4,9 +4,12 @@ import '../config/app_styles.dart';
 
 Widget makeInput({label, icon, obscureText = false, hint, controller, clickable = false}) {
   bool isEnabled = !clickable;
+  bool passwordVisible = obscureText;
+
   return TextField(
     controller: controller,
     enabled: isEnabled,
+    obscureText: passwordVisible,
     onTap: clickable ? () => isEnabled = false : null,
     decoration: InputDecoration(
       prefixIcon: SizedBox(

@@ -8,14 +8,19 @@ import '../routes/app_routes.dart';
 class SignUpController extends GetxController with BaseController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _db = FirebaseFirestore.instance;
-
-  // controller fields for the signup form
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final phoneNumberController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
-  // validation function for email input
+  String? validateName(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Name is required';
+    }
+    return null;
+  }
+
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required';
@@ -26,15 +31,23 @@ class SignUpController extends GetxController with BaseController {
     return null;
   }
 
-  // validation function for password input
   String? validatePhoneNumber(String? value) {
-    if (value == null || value.isEmpty || !value.isPhoneNumber) {
-      return 'Phone number is required should be valid';
+    if (value == null || value.isEmpty) {
+      return 'Phone number is required';
+    }
+    if (!_isTunisianPhoneNumber(value)) {
+      return 'Invalid phone number';
     }
     return null;
   }
 
-  // validation function for confirm password input
+  bool _isTunisianPhoneNumber(String value) {
+    // Tunisian phone number format: +216xxxxxxxx or 216xxxxxxxx or 00216xxxxxxxx
+    final RegExp regex = RegExp(r'^(\+?216|00216|216)?(5|9|7)([0-9]{7})$');
+    return regex.hasMatch(value);
+  }
+
+
   String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'Password is required';
@@ -42,49 +55,67 @@ class SignUpController extends GetxController with BaseController {
     return null;
   }
 
-  // function to handle signup button press
+  String? validateConfirmPassword(String? password,String? confirmPassword) {
+    if (confirmPassword == null || confirmPassword.isEmpty) {
+      return 'Confirm password is required';
+    }
+    if (password != confirmPassword) {
+      return 'Passwords do not match';
+    }
+    return null;
+  }
+
   void handleSignUp() async {
     final name = nameController.text.trim();
     final email = emailController.text.trim();
-    final password = phoneNumberController.text;
+    final phoneNumber = phoneNumberController.text.trim();
+    final password = passwordController.text;
+    final confirmPassword = confirmPasswordController.text;
 
-    // perform form validation
-    if (!GetUtils.isLengthGreaterThan(name, 0)) {
-      Get.snackbar('Error', 'Name is required');
+    final nameError = validateName(name);
+    if (nameError != null) {
+      Get.snackbar('Error', nameError);
       return;
     }
+
     final emailError = validateEmail(email);
     if (emailError != null) {
       Get.snackbar('Error', emailError);
       return;
     }
-    final passwordError = validatePhoneNumber(password);
+
+    final phoneNumberError = validatePhoneNumber(phoneNumber);
+    if (phoneNumberError != null) {
+      Get.snackbar('Error', phoneNumberError);
+      return;
+    }
+
+    final passwordError = validatePassword(password);
     if (passwordError != null) {
       Get.snackbar('Error', passwordError);
       return;
     }
-    final confirmPasswordError = validatePassword(passwordController.text);
+
+    final confirmPasswordError = validateConfirmPassword(password,confirmPassword);
     if (confirmPasswordError != null) {
       Get.snackbar('Error', confirmPasswordError);
       return;
     }
+
     showLoading();
-    // create user with email and password
+
     try {
       final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
       final user = userCredential.user;
-
-      // add user data to firestore
       await _db.collection('users').doc(user?.uid).set({
         'name': name,
         'email': email,
-        'phone':phoneNumberController.text
+        'phone': phoneNumber,
       });
       hideLoading();
-      // navigate to dashboard route
       Get.offNamed(AppRoutes.dashboard);
     } on FirebaseAuthException catch (e) {
       print(e);
@@ -108,6 +139,7 @@ class SignUpController extends GetxController with BaseController {
     emailController.dispose();
     phoneNumberController.dispose();
     passwordController.dispose();
+    confirmPasswordController.dispose();
     super.dispose();
   }
 }
