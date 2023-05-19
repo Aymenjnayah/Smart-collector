@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -6,11 +8,19 @@ import '../models/user.dart';
 
 class ProfileController extends GetxController {
   Rx<UserModel> currentUser = UserModel.empty().obs; // Initialize with empty UserModel
+  Timer? fetchTimer;
 
   @override
   void onInit() {
     super.onInit();
-    fetchCurrentUser();
+    startFetchingCurrentUser();
+  }
+
+  void startFetchingCurrentUser() {
+    fetchCurrentUser(); // Fetch immediately on start
+    fetchTimer = Timer.periodic(Duration(seconds: 1), (_) {
+      fetchCurrentUser();
+    });
   }
 
   Future<void> fetchCurrentUser() async {

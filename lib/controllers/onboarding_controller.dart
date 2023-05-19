@@ -10,18 +10,18 @@ class OnboardingController extends GetxController {
   final List<OnboardingInfo> onboardingPages = [
     OnboardingInfo(
       'assets/images/image1.svg',
-      'This is title 1',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      'Unlock the Hidden Value',
+      "oin Smart Collector to turn used items into valuable treasures. Explore a sustainable future where waste becomes wealth. Together, let's save the Earth while discovering the value in every item.",
     ),
     OnboardingInfo(
       'assets/images/image2.svg',
-      'This is title 2',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      "Repurpose for a Better Tomorrow",
+      "Embrace Smart Collector to repurpose discarded items and make a difference. Discover hidden value in things others consider waste. Reduce waste, protect the planet, and save money with every step.",
     ),
     OnboardingInfo(
       'assets/images/image3.svg',
-      'This is title 3',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      "Green Living, Wealthy Living",
+      "Experience sustainability and savings with Smart Collector. Repurpose used items for a greener lifestyle and unlock economic value. Create a greener and wealthier world by reducing waste and saving money.",
     ),
   ];
 

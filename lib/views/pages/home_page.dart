@@ -8,11 +8,11 @@ import '../../widgets/SubmitButton.dart';
 import '../../widgets/request_card.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final HomeController controller = Get.put(HomeController());
+   HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final HomeController controller = Get.put(HomeController());
 
     return Scaffold(
       body: SafeArea(

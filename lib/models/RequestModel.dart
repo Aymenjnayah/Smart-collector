@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_collector/models/user.dart';
 
 class RequestModel {
@@ -27,6 +28,7 @@ class RequestModel {
       user: UserModel.fromMap(map['user']),
     );
   }
+
 
   Map<String, dynamic> toMap() {
     return {

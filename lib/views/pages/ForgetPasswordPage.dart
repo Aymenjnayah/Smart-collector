@@ -25,7 +25,7 @@ class ForgetPasswordPage extends StatelessWidget {
                 "Forgot Password",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: FontSize.fs20 * 2,
+                  fontSize: FontSize.fs20 ,
                   color: AppColors.primary_color,
                 ),
               ),
@@ -45,6 +45,11 @@ class ForgetPasswordPage extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: 'Enter your email',
                   prefixIcon: Icon(Icons.email),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {

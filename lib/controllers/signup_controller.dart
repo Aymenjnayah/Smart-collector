@@ -28,11 +28,24 @@ class SignUpController extends GetxController with BaseController {
 
   // validation function for password input
   String? validatePhoneNumber(String? value) {
-    if (value == null || value.isEmpty || !value.isPhoneNumber) {
-      return 'Phone number is required should be valid';
+    print(value);
+    if (value == null || value.isEmpty) {
+      return 'Phone number is required.';
     }
+
+    // Regular expression pattern for Tunisian phone numbers
+    final pattern = r'^\+216\d{8}$';
+
+    // Create a regular expression object
+    final regex = RegExp(pattern);
+
+    if (!regex.hasMatch(value)) {
+      return 'Phone number should be a valid number.';
+    }
+
     return null;
   }
+
 
   // validation function for confirm password input
   String? validatePassword(String? value) {
@@ -46,7 +59,8 @@ class SignUpController extends GetxController with BaseController {
   void handleSignUp() async {
     final name = nameController.text.trim();
     final email = emailController.text.trim();
-    final password = phoneNumberController.text;
+    final phoneNumber = phoneNumberController.text.trim();
+    final password = passwordController.text;
 
     // perform form validation
     if (!GetUtils.isLengthGreaterThan(name, 0)) {
@@ -58,7 +72,12 @@ class SignUpController extends GetxController with BaseController {
       Get.snackbar('Error', emailError);
       return;
     }
-    final passwordError = validatePhoneNumber(password);
+    final phoneNumberError = validatePhoneNumber(phoneNumber);
+    if (phoneNumberError != null) {
+      Get.snackbar('Error', phoneNumberError);
+      return;
+    }
+    final passwordError = validatePassword(password);
     if (passwordError != null) {
       Get.snackbar('Error', passwordError);
       return;

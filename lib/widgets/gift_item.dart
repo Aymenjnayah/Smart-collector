@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:smart_collector/models/Gift.dart';
 
 import '../config/app_styles.dart';
-import '../models/Item.dart';
 import 'NumberPicker.dart';
 
 class GiftItem extends StatelessWidget {
   final Gift item;
   final bool showNumberPicker;
+  final void Function(int) onDecrease;
+  final void Function(int) onIncrease;
 
   const GiftItem({
     Key? key,
     required this.item,
     this.showNumberPicker = true,
+    required this.onDecrease,
+    required this.onIncrease,
   }) : super(key: key);
 
   @override
@@ -79,10 +83,13 @@ class GiftItem extends StatelessWidget {
                 SizedBox(
                   height: 12,
                 ),
-                showNumberPicker ? NumberPicker(
-                  value: 5,
-                  onChanged: (value) {},
-                ) : Container(),
+                showNumberPicker
+                    ? NumberPicker(
+                  value: item.selectedCount??0,
+                  onDecrease: onDecrease,
+                  onIncrease: onIncrease,
+                )
+                    : Container(),
               ],
             ),
           ),

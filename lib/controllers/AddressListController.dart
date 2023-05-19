@@ -18,6 +18,7 @@ class AddressListController extends GetxController with BaseController {
   }
 
   void fetchAddressList() {
+    showLoading();
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser != null) {
       final userId = currentUser.uid;
@@ -31,6 +32,7 @@ class AddressListController extends GetxController with BaseController {
         addressList.value = addresses;
       });
     }
+    hideLoading();
   }
 
   void goToAddAddress() {

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:smart_collector/config/app_styles.dart';
+import 'package:smart_collector/controllers/NewRequestStepThree_controller.dart';
 
 import '../../../widgets/NewRequestAppBar.dart';
 
 class NewRequestPageStepThree extends StatelessWidget {
-  const NewRequestPageStepThree({Key? key}) : super(key: key);
+  final controller = Get.put(NewRequestStepThreeController());
+  NewRequestPageStepThree({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,19 +53,19 @@ class NewRequestPageStepThree extends StatelessWidget {
                   const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Column(
+                    child: Obx(() => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 10),
                         Text("Amount (L)", style: AppStyles.black14W7Style),
-                        Text("5.00"),
+                        Text(controller.request.value.amount.toString()),
                         Text("Address", style: AppStyles.black14W7Style),
-                        Text("39 Ali belhawen street, Eljem, Mahdia"),
+                        Text(controller.request.value.address.toString()),
                         Text("Appointment", style: AppStyles.black14W7Style),
-                        Text("Oct 24, 2022"),
+                        Text(controller.request.value.address.toString()),
                         const SizedBox(height: 10),
                       ],
-                    ),
+                    )),
                   ),
                   const SizedBox(height: 10),
                   const Divider(
@@ -71,9 +75,11 @@ class NewRequestPageStepThree extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Center(
-                    child: Image.asset(
-                      "assets/images/sample_qr_code.png",
-                      height: 150,
+                    child: QrImageView(
+                      data: controller.request.value.qrCode.toString(),
+                      version: QrVersions.auto,
+                      size: 150,
+                      gapless: false,
                     ),
                   ),
                   const SizedBox(height: 10),

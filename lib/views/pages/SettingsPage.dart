@@ -43,7 +43,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       child: IconButton(
                         onPressed:() {
-                          Get.offNamed(AppRoutes.profile);
+                          Get.back();
                         },
                         icon: Icon(
                           Icons.chevron_left,

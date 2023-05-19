@@ -70,6 +70,7 @@ class SignInPage extends StatelessWidget {
                     makeInput(
                       hint: "Password",
                       icon: const Icon(Icons.lock),
+                      obscureText: true,
                       controller: controller.passwordController,
                     ),
                     buildSpacer(),

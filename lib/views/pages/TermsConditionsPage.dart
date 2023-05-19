@@ -31,7 +31,7 @@ class TermsConditionsPage extends StatelessWidget {
                     ),
                     child: IconButton(
                       onPressed: () {
-                        Get.offNamed(AppRoutes.profile);
+                        Get.back();
                       },
                       icon: Icon(
                         Icons.chevron_left,

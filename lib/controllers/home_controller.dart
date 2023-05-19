@@ -1,26 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:smart_collector/config/base_controller.dart';
 
 import '../models/RequestModel.dart';
 import '../models/user.dart';
 
-class HomeController extends GetxController {
+class HomeController extends GetxController with BaseController{
   final myList = <RequestModel>[].obs;
   Rx<UserModel> currentUser = UserModel.empty().obs;
 
   @override
   void onInit() {
     super.onInit();
-    fetchCurrentUser();
-    myList.addAll([
-      /*  RequestModel(liters: 4, gift: 'Pack Nadhif', date: 'Mon, Oct 24'),
-        RequestModel(liters: 14, gift: 'Pack javel', date: 'Wed, Oct 26'),
-        RequestModel(liters: 7, gift: 'Pack rose...', date: 'Mon, Oct 31'),
-        RequestModel(liters: 7, gift: '2 pack nadhif', date: 'Mon, Nov 04'),*/
-    ]);
   }
 
+  @override
+  void onReady() {
+    super.onReady();
+    fetchCurrentUser();
+    fetchRequests();
+  }
   Future<void> fetchCurrentUser() async {
     try {
       String uid = FirebaseAuth.instance.currentUser?.uid ?? '';
@@ -35,7 +35,23 @@ class HomeController extends GetxController {
     }
   }
 
-  void addItem() {
-    //myList.add(RequestModel(liters: 7, gift: '2 pack lepi...', date: 'Mon, Nov 29'));
+  Future<void> fetchRequests() async {
+    showLoading();
+    try {
+      String uid = FirebaseAuth.instance.currentUser?.uid ?? '';
+      QuerySnapshot requestDocs = await FirebaseFirestore.instance
+          .collection('requests')
+          .where('userUID', isEqualTo: uid)
+          .get();
+      myList.value = requestDocs.docs
+          .map<RequestModel>((doc) => RequestModel.fromMap(doc.data() as Map<String, dynamic>))
+          .toList();
+      hideLoading();
+    } catch (e) {
+      hideLoading();
+      // Handle any errors
+    }
   }
+
+  void addItem() {}
 }

@@ -31,26 +31,24 @@ class OnboardingPage extends StatelessWidget {
                         _controller.onboardingPages[index].imageAsset,
                         width: 250,
                       ),
-                      SizedBox(height: 32),
+                      SizedBox(height: 20),
                       Text(
                         _controller.onboardingPages[index].title,
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
                       ),
                       SizedBox(height: 32),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
                           _controller.onboardingPages[index].description,
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 13),
                         ),
                       ),
-                      SizedBox(height: 32),
-
                     ],
                   ),
                 );

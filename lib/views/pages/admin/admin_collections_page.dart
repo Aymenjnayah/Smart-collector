@@ -48,6 +48,12 @@ class AdminCollectionsPage extends StatelessWidget {
                     return GiftItem(
                       item: item,
                       showNumberPicker: false,
+                      onDecrease: (value) {
+                        // Handle decrease logic
+                      },
+                      onIncrease: (value) {
+                        // Handle increase logic
+                      },
                     );
                   },
                 ),

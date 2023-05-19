@@ -23,7 +23,7 @@ class AboutUsPage extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
-                    Get.offNamed(AppRoutes.profile);
+                    Get.back();
                   },
                   icon: Icon(
                     Icons.chevron_left,

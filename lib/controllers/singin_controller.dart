@@ -26,10 +26,12 @@ class SignInController extends GetxController with BaseController{
   Future<void> handleSignIn() async {
     showLoading();
     try {
-
+      print("Moussa");
+      print(emailController.text);
+      print(passwordController.text);
 
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-          email: emailController.text.toString(), password: passwordController.text.toString());
+          email: emailController.text, password: passwordController.text);
       String uid = userCredential.user!.uid;
       DocumentSnapshot userDoc =
       await _firestore.collection('users').doc(uid).get();

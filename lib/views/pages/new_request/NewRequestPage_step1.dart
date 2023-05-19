@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:smart_collector/config/values_manager.dart';
 import 'package:smart_collector/controllers/NewRequestStepOne_controller.dart';
 import 'package:smart_collector/widgets/AmountInput.dart';
@@ -9,11 +10,11 @@ import '../../../widgets/custum_text_field.dart';
 import '../../../widgets/medium_text_widget.dart';
 
 class NewRequestPageStepOne extends StatelessWidget {
-  const NewRequestPageStepOne({Key? key}) : super(key: key);
+  final controller = NewRequestStepOneController();
+  NewRequestPageStepOne({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = NewRequestStepOneController();
 
     return Scaffold(
       body: SafeArea(
@@ -21,21 +22,24 @@ class NewRequestPageStepOne extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustumAppBar(
+            const CustumAppBar(
               title: "New Request",
             ),
             SizedBox(height: AppSize.hs14),
-            MediumTextWidget(
-              text: "Set amount, appointment and address",
-              color: AppColors.gold,
-              size: FontSize.fs14,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: MediumTextWidget(
+                text: "Set amount, appointment and address",
+                color: AppColors.gold,
+                size: FontSize.fs18,
+              ),
             ),
             SizedBox(height: AppSize.hs14),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: AppSize.ws10 * 2,
+                  width: AppSize.ws25,
                   height: AppSize.ws10,
                   decoration: BoxDecoration(
                     color: AppColors.primary_color,
@@ -53,7 +57,15 @@ class NewRequestPageStepOne extends StatelessWidget {
                 ),
               ],
             ),
-            AmountInput(value: "5"),
+            Obx(() => AmountInput(
+              value: controller.amount.value.toString(),
+              onLeftGesture: () {
+                controller.increaseAmount();
+              },
+              onRightGesture: () {
+                controller.decreaseAmount();
+              },
+            )),
             SizedBox(height: AppSize.hs14),
             Container(
               width: double.maxFinite,
@@ -61,36 +73,61 @@ class NewRequestPageStepOne extends StatelessWidget {
               color: AppColors.primary_white_color,
             ),
             SizedBox(height: AppSize.hs14),
-            MediumTextWidget(
-              text: "Address",
-              color: AppColors.Subtitle,
-              size: FontSize.fs18,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: MediumTextWidget(
+                text: "Address",
+                color: AppColors.Subtitle,
+                size: FontSize.fs18,
+              ),
             ),
             SizedBox(height: AppSize.hs10),
-            Row(
-              children: [
-                Icon(
-                  Icons.location_pin,
-                  color: AppColors.grey,
-                  size: AppSize.hs20 * 2,
-                ),
-                SizedBox(width: AppSize.ws10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MediumTextWidget(
-                      text: "39 Ali belhawen street",
-                      color: AppColors.Subtitle,
-                      size: FontSize.fs16,
-                    ),
-                    MediumTextWidget(
-                      text: "Eljem , Mahdia",
-                      color: AppColors.Subtitle,
-                      size: FontSize.fs16,
-                    ),
-                  ],
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.location_pin,
+                    color: AppColors.grey,
+                    size: AppSize.hs20 * 2,
+                  ),
+                  SizedBox(width: AppSize.ws10),
+                  Obx(() =>  MediumTextWidget(
+                    text: controller.address.value,
+                    color: AppColors.Subtitle,
+                    size: FontSize.fs16,
+                  )),
+                ],
+              ),
+            ),
+            SizedBox(height: AppSize.hs14),
+            Container(
+              width: double.maxFinite,
+              height: AppSize.hs5 / 2,
+              color: AppColors.primary_white_color,
+            ),
+            SizedBox(height: AppSize.hs14),
+            GestureDetector(
+              onTap: ()=>{
+                controller.addAddress()
+              },
+              child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: AppPadding.wp20),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.location_pin,
+                        color: AppColors.primary_color,
+                        size: AppSize.hs20 * 2,
+                      ),
+                      SizedBox(width: AppSize.ws10),
+                      MediumTextWidget(
+                        text: "Change Address",
+                        color: AppColors.primary_color,
+                        size: FontSize.fs18,
+                      ),
+                    ],
+                  )),
             ),
             SizedBox(height: AppSize.hs14),
             Container(
@@ -100,47 +137,32 @@ class NewRequestPageStepOne extends StatelessWidget {
             ),
             SizedBox(height: AppSize.hs14),
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: AppPadding.wp20),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.location_pin,
-                      color: AppColors.primary_color,
-                      size: AppSize.hs20 * 2,
-                    ),
-                    SizedBox(width: AppSize.ws10),
-                    MediumTextWidget(
-                      text: "Change Address",
-                      color: AppColors.primary_color,
-                      size: FontSize.fs18,
-                    ),
-                  ],
-                )),
-            SizedBox(height: AppSize.hs14),
-            Container(
-              width: double.maxFinite,
-              height: AppSize.hs5 / 2,
-              color: AppColors.primary_white_color,
-            ),
-            SizedBox(height: AppSize.hs14),
-            MediumTextWidget(
-              text: "Appointment",
-              color: AppColors.Subtitle,
-              size: FontSize.fs18,
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: MediumTextWidget(
+                text: "Appointment",
+                color: AppColors.Subtitle,
+                size: FontSize.fs18,
+              ),
             ),
             SizedBox(height: AppSize.hs10),
-            GestureDetector(
-              onTap: () => {controller.getDate()},
-              child: makeInput(
-                  clickable: true,
-                  hint: "Select Date",
-                  controller: controller.dateController,
-                  icon: const Icon(Icons.calendar_month)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: GestureDetector(
+                onTap: () => {controller.getDate()},
+                child: makeInput(
+                    clickable: true,
+                    hint: "Select Date",
+                    controller: controller.dateController,
+                    icon: const Icon(Icons.calendar_month)),
+              ),
             ),
             SizedBox(height: AppSize.hs20),
-            SubmitButton(buttonText: "Next step", onPressed: () => {
-              controller.goToNextStep()
-            })
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: SubmitButton(buttonText: "Next step", onPressed: () => {
+                controller.goToNextStep()
+              }),
+            )
           ],
         ),
       )),

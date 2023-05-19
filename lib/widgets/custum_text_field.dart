@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../config/app_styles.dart';
 
-Widget makeInput({label, icon, obscureText = false, hint, controller, clickable = false}) {
+Widget makeInput({
+  label,
+  icon,
+  obscureText = false,
+  hint,
+  controller,
+  clickable = false,
+}) {
   bool isEnabled = !clickable;
+
   return TextField(
     controller: controller,
     enabled: isEnabled,
+    obscureText: obscureText, // Set obscureText based on the parameter value
     onTap: clickable ? () => isEnabled = false : null,
     decoration: InputDecoration(
       prefixIcon: SizedBox(
