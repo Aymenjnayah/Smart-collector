@@ -13,8 +13,6 @@ class LocationsController extends GetxController  with BaseController{
 
   addAddress() async {
     showLoading();
-    await _getCurrentLocation();
-
     if (!_validateFields()) {
       hideLoading();
       Get.snackbar('Error', 'Please fill in all fields');
@@ -33,8 +31,8 @@ class LocationsController extends GetxController  with BaseController{
       'town': townController.text,
       'address': addressController.text,
       'comment': commentController.text,
-      'latitude': _currentLocation?.latitude ?? 0.0,
-      'longitude': _currentLocation?.longitude ?? 0.0,
+      'latitude':  0.0,
+      'longitude':  0.0,
     });
 
     hideLoading();

@@ -33,14 +33,14 @@ class SignInPage extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    SizedBox(
-                      height: AppSize.hs100,
-                    ),
+                    SizedBox(height: 30,),
+                    Image.asset("assets/images/login_image_big.png"),
+                    SizedBox(height: 10,),
                     Text(
-                      "Welcome",
+                      "Sign in",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: FontSize.fs20 * 2,
+                        fontSize: FontSize.fs20,
                         color: AppColors.primary_color,
                       ),
                       textAlign: TextAlign.center,
@@ -49,7 +49,7 @@ class SignInPage extends StatelessWidget {
                       height: AppSize.hs10,
                     ),
                     const Text(
-                      "Log to your Account !",
+                      "and join the community",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16.0,
@@ -90,7 +90,7 @@ class SignInPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Does not have an account?'),
+                    const Text('I don’t have an account !',style: TextStyle(   fontWeight: FontWeight.bold,),),
                     TextButton(
                       child: Text(
                         'Sign up',

@@ -10,11 +10,12 @@ Widget makeInput({
   clickable = false,
 }) {
   bool isEnabled = !clickable;
+  bool passwordVisible = obscureText;
 
   return TextField(
     controller: controller,
     enabled: isEnabled,
-    obscureText: obscureText, // Set obscureText based on the parameter value
+    obscureText: passwordVisible,
     onTap: clickable ? () => isEnabled = false : null,
     decoration: InputDecoration(
       prefixIcon: SizedBox(
