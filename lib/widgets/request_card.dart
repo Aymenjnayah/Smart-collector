@@ -5,49 +5,59 @@ import '../config/fonts_manager.dart';
 import '../config/values_manager.dart';
 import 'medium_text_widget.dart';
 
+
 class RequestCard extends StatelessWidget {
-  final String gift;
+  final List<Map<String, dynamic>> gifts;
   final String liters;
   final String date;
+  final String address;
+  final VoidCallback? onDelete;
+  final VoidCallback? onTap;
 
   const RequestCard({
     Key? key,
     required this.liters,
-    required this.gift,
+    required this.gifts,
     required this.date,
+    required this.address,
+    this.onDelete,
+    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-      padding:  EdgeInsets.symmetric(
-        vertical: AppPadding.hp20,
-        horizontal: AppPadding.wp14,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primary_color,
-            blurRadius: AppSize.hs5,
-            offset: Offset.zero,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              _buildLiters(),
-              _buildDivider(),
-              _buildGiftAndDate(),
-            ],
-          ),
-          _buildDeleteButton(),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+        padding: EdgeInsets.symmetric(
+          vertical: AppPadding.hp20,
+          horizontal: AppPadding.wp14,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.primary_color,
+              blurRadius: AppSize.hs5,
+              offset: Offset.zero,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                _buildLiters(),
+                _buildDivider(),
+                _buildGiftsAndDate(),
+              ],
+            ),
+            if (onDelete != null) _buildDeleteButton(),
+          ],
+        ),
       ),
     );
   }
@@ -60,7 +70,7 @@ class RequestCard extends StatelessWidget {
           size: AppSize.hs25,
           color: AppColors.gold,
         ),
-         SizedBox(height: AppSize.hs5),
+        SizedBox(height: AppSize.hs5),
         MediumTextWidget(
           text: liters,
           size: FontSize.fs20,
@@ -71,32 +81,33 @@ class RequestCard extends StatelessWidget {
   }
 
   Widget _buildDivider() {
-    return  SizedBox(
+    return SizedBox(
       width: AppSize.ws20,
       child: const VerticalDivider(color: Colors.grey),
     );
   }
 
-  Widget _buildGiftAndDate() {
+  Widget _buildGiftsAndDate() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Icon(
-              Icons.swap_vert_circle,
-              size: AppSize.hs25,
-              color: AppColors.primary_color,
-            ),
-             SizedBox(width: AppSize.ws10),
-            MediumTextWidget(
-              text: gift,
-              size: FontSize.fs18,
-              fontWeight: FontWeightManager.semiBold,
-            ),
-          ],
-        ),
-         SizedBox(height: AppSize.hs5),
+        for (final gift in gifts)
+          Row(
+            children: [
+              Icon(
+                Icons.swap_vert_circle,
+                size: AppSize.hs25,
+                color: AppColors.primary_color,
+              ),
+              SizedBox(width: AppSize.ws10),
+              MediumTextWidget(
+                text: address,
+                size: FontSize.fs18,
+                fontWeight: FontWeightManager.semiBold,
+              ),
+            ],
+          ),
+        SizedBox(height: AppSize.hs5),
         Row(
           children: [
             Icon(
@@ -104,7 +115,7 @@ class RequestCard extends StatelessWidget {
               size: AppSize.hs25,
               color: AppColors.primary_color,
             ),
-             SizedBox(width: AppSize.ws10),
+            SizedBox(width: AppSize.ws10),
             MediumTextWidget(
               text: date,
               size: FontSize.fs16,
@@ -117,10 +128,13 @@ class RequestCard extends StatelessWidget {
   }
 
   Widget _buildDeleteButton() {
-    return Icon(
-      Icons.delete,
-      size: 35,
-      color: AppColors.danger,
+    return GestureDetector(
+      onTap: onDelete,
+      child: Icon(
+        Icons.delete,
+        size: 35,
+        color: AppColors.danger,
+      ),
     );
   }
 }

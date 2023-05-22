@@ -47,8 +47,8 @@ class AdminRequestsPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return RequestCard(
                       liters: "${controller.filteredRequests[index].liters}L",
-                      gift: controller.filteredRequests[index].gift.toString(),
-                      date: controller.filteredRequests[index].date.toString(),
+                      gifts: [],
+                      date: controller.filteredRequests[index].date.toString(), address: '',
                     );
                   },
                 ),

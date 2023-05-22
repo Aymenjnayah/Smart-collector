@@ -5,7 +5,8 @@ class Request {
   final List<Map<String, dynamic>> gifts;
   final String? userUID;
   final String? status;
-  late final String? qrCode;
+  final String? qrCode;
+  final String? docId; // Add the docId attribute
 
   Request({
     this.amount,
@@ -15,6 +16,7 @@ class Request {
     this.userUID,
     this.status,
     this.qrCode,
+    this.docId, // Include the docId attribute in the constructor
   }) : gifts = gifts ?? [];
 
   factory Request.fromMap(Map<String, dynamic> map) {
@@ -23,11 +25,14 @@ class Request {
       address: map['address'],
       date: map['date'] != null ? DateTime.parse(map['date']) : null,
       gifts: map['gifts'] != null
-          ? (map['gifts'] as List<dynamic>).map((item) => item as Map<String, dynamic>).toList()
-          : null,
+          ? (map['gifts'] as List<dynamic>)
+              .map((item) => item as Map<String, dynamic>)
+              .toList()
+          : [],
       userUID: map['userUID'],
       status: map['status'],
       qrCode: map['qrCode'],
+      docId: map['docId'], // Assign the docId attribute from the map
     );
   }
 
@@ -40,6 +45,7 @@ class Request {
       'userUID': userUID,
       'status': status,
       'qrCode': qrCode,
+      'docId': docId, // Include the docId attribute in the map
     };
   }
 }

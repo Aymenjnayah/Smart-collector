@@ -9,11 +9,11 @@ import '../../widgets/request_card.dart';
 
 class HomePage extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
-   HomePage({super.key});
+
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
                 liters: "126",
                 image: controller.currentUser.value.avatar)),
             Obx(
-                  () {
+              () {
                 if (controller.myList.isNotEmpty) {
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -116,9 +116,15 @@ class HomePage extends StatelessWidget {
                       itemCount: controller.myList.length,
                       itemBuilder: (context, index) {
                         return RequestCard(
-                          liters: "${controller.myList[index].liters}L",
-                          gift: controller.myList[index].gift.toString(),
+                          liters: "${controller.myList[index].amount}L",
                           date: controller.myList[index].date.toString(),
+                          gifts: controller.myList[index].gifts, address: controller.myList[index].address!,
+                          onDelete: ()=>{
+                              controller.deleteRequest(controller.myList[index].docId)
+                          },
+                          onTap: ()=>{
+                            controller.showQrCode(controller.myList[index].qrCode)
+                          },
                         );
                       },
                     ),

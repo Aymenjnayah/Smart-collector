@@ -48,8 +48,9 @@ dependencies:
   uuid: ^3.0.4
   url_launcher: ^6.1.11
   location: ^4.4.0
-  qr_flutter: ^4.0.0
+  qr_flutter: ^4.1.0
   image: ^4.0.17
+  flutter_barcode_scanner: ^2.0.0
 
 dev_dependencies:
   flutter_test:

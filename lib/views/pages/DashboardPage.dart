@@ -3,7 +3,6 @@ import 'package:smart_collector/views/pages/AddressListPage.dart';
 import 'package:smart_collector/views/pages/ProfilePage.dart';
 import 'package:smart_collector/views/pages/home_page.dart';
 import 'package:smart_collector/views/pages/NotificationsPage.dart';
-import 'package:smart_collector/views/pages/LocationsPage.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/BottomNavyBarItem.dart';

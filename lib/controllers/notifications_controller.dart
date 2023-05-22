@@ -17,4 +17,7 @@ class NotificationsController extends GetxController with SingleGetTickerProvide
     tabController.dispose();
     super.onClose();
   }
+
+
+//  get list notifications from collections notifications when userId equals to current user it
 }

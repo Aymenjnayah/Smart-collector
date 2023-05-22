@@ -10,6 +10,8 @@ import '../../config/fonts_manager.dart';
 import '../../controllers/notifications_controller.dart';
 
 class NotificationsPage extends StatelessWidget {
+  const NotificationsPage({super.key});
+
   Widget deletBgItem() {
     return Container(
         alignment: Alignment.centerRight,
