@@ -91,7 +91,6 @@ class RequestCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        for (final gift in gifts)
           Row(
             children: [
               Icon(

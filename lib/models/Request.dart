@@ -1,3 +1,5 @@
+import 'Gift.dart';
+
 class Request {
   final int? amount;
   final String? address;
@@ -6,7 +8,8 @@ class Request {
   final String? userUID;
   final String? status;
   final String? qrCode;
-  final String? docId; // Add the docId attribute
+  late final String? docId;
+  List<Gift>? giftObjects; // Add the optional attribute for the array of Gift objects
 
   Request({
     this.amount,
@@ -16,7 +19,8 @@ class Request {
     this.userUID,
     this.status,
     this.qrCode,
-    this.docId, // Include the docId attribute in the constructor
+    this.docId,
+    this.giftObjects, // Include the optional attribute for the array of Gift objects in the constructor
   }) : gifts = gifts ?? [];
 
   factory Request.fromMap(Map<String, dynamic> map) {
@@ -26,13 +30,14 @@ class Request {
       date: map['date'] != null ? DateTime.parse(map['date']) : null,
       gifts: map['gifts'] != null
           ? (map['gifts'] as List<dynamic>)
-              .map((item) => item as Map<String, dynamic>)
-              .toList()
+          .map((item) => item as Map<String, dynamic>)
+          .toList()
           : [],
       userUID: map['userUID'],
       status: map['status'],
       qrCode: map['qrCode'],
-      docId: map['docId'], // Assign the docId attribute from the map
+      docId: map['docId'],
+      giftObjects: null, // Set the initial value of the giftObjects attribute to null
     );
   }
 
@@ -45,7 +50,7 @@ class Request {
       'userUID': userUID,
       'status': status,
       'qrCode': qrCode,
-      'docId': docId, // Include the docId attribute in the map
+      'docId': docId,
     };
   }
 }

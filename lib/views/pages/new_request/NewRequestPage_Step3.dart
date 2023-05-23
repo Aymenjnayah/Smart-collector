@@ -64,7 +64,7 @@ class NewRequestPageStepThree extends StatelessWidget {
                           Text("Address", style: AppStyles.black14W7Style),
                           Text(controller.request.value.address.toString()),
                           Text("Appointment", style: AppStyles.black14W7Style),
-                          Text(controller.request.value.address.toString()),
+                          Text(controller.request.value.date.toString()),
                           const SizedBox(height: 10),
                         ],
                       ),
@@ -78,7 +78,7 @@ class NewRequestPageStepThree extends StatelessWidget {
                   const SizedBox(height: 10),
                   Center(
                     child: QrImageView(
-                      data: controller.request.value.qrCode.toString(),
+                      data: controller.request.value.docId.toString(),
                       version: QrVersions.auto,
                       size: 150,
                       gapless: false,

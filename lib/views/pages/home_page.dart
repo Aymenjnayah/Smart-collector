@@ -123,7 +123,7 @@ class HomePage extends StatelessWidget {
                               controller.deleteRequest(controller.myList[index].docId)
                           },
                           onTap: ()=>{
-                            controller.showQrCode(controller.myList[index].qrCode)
+                            controller.showQrCode(controller.myList[index].docId)
                           },
                         );
                       },

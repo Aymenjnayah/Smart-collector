@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_collector/controllers/admin/admin_scanner_controller.dart';
-
 import '../../../widgets/NewRequestAppBar.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class AdminScannerPage extends StatelessWidget {
-  const AdminScannerPage({Key? key}) : super(key: key);
+  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+
+  AdminScannerPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,21 +23,30 @@ class AdminScannerPage extends StatelessWidget {
             ),
             Expanded(
               child: GestureDetector(
-                onTap: () {controller.goToNext();},
+                onTap: () {},
                 child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal:20,vertical: 10 ),
+                  margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: Colors.black,
                     ),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Center(
-                    child: Image.asset(
-                      "assets/images/qr_code_image.png",
-                      width: 180,
-                      height: 180,
-                    ),
+                  child: QRView(
+                    key: qrKey,
+                    onQRViewCreated: (QRViewController controller) {
+                      controller.scannedDataStream.listen((scanData) {
+                        // Call the method in the controller to handle the scanned QR code data
+                        controller.pauseCamera();
+                        controller.dispose();
+                        controller.resumeCamera();
+
+                        // Pass the scanned QR code data to the controller
+                        final qrCodeData = scanData.code;
+                        final adminScannerController = Get.find<AdminScannerController>();
+                        adminScannerController.goToNextScreen(qrCodeData);
+                      });
+                    },
                   ),
                 ),
               ),

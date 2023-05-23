@@ -46,9 +46,13 @@ class AdminRequestsPage extends StatelessWidget {
                   itemCount: controller.filteredRequests.length,
                   itemBuilder: (context, index) {
                     return RequestCard(
-                      liters: "${controller.filteredRequests[index].liters}L",
+                      liters: "${controller.filteredRequests[index].amount}L",
                       gifts: [],
-                      date: controller.filteredRequests[index].date.toString(), address: '',
+                      date: controller.filteredRequests[index].date.toString(),
+                      address: "${controller.filteredRequests[index].giftObjects?.map((gift) => gift.title).join(', ')}L",
+                      onTap: ()=>{
+                        controller.showQrCode(controller.myList[index].docId)
+                      },
                     );
                   },
                 ),
