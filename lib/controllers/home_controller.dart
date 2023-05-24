@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:smart_collector/config/base_controller.dart';
 
+import '../models/Gift.dart';
 import '../models/Request.dart';
 import '../models/RequestModel.dart';
 import '../models/user.dart';
@@ -38,22 +39,35 @@ class HomeController extends GetxController with BaseController {
 
   Future<void> fetchRequests() async {
     showLoading();
-    try {
-      String uid = FirebaseAuth.instance.currentUser?.uid ?? '';
-      QuerySnapshot requestDocs = await FirebaseFirestore.instance
-          .collection('requests')
-          .where('userUID', isEqualTo: uid)
-          .get();
-      myList.value = requestDocs.docs.map<Request>((doc) {
-        Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-        data['docId'] = doc.id; // Add the document ID to the data
-        return Request.fromMap(data);
-      }).toList();
-      hideLoading();
-    } catch (e) {
-      hideLoading();
-// Handle any errors
+    final requests = await FirebaseFirestore.instance.collection('requests').get();
+
+    final requestList = requests.docs.map((doc) async {
+      final request = Request.fromMap(doc.data());
+
+      final List<Map<String, dynamic>> gifts = request.gifts;
+      final giftIds = gifts.map((giftData) => giftData['id']).toList();
+      final giftObjects = await getGiftObjects(giftIds);
+      request.giftObjects = giftObjects;
+      return request;
+    }).toList();
+
+    myList.assignAll(await Future.wait(requestList));
+    hideLoading();
+  }
+
+
+  Future<List<Gift>> getGiftObjects(List<dynamic> giftIds) async {
+    final giftObjects = <Gift>[];
+
+    for (final giftId in giftIds) {
+      final giftSnapshot = await FirebaseFirestore.instance.collection('gifts').doc(giftId).get();
+      if (giftSnapshot.exists) {
+        final gift = Gift.fromMap(giftSnapshot.data()!);
+        giftObjects.add(gift);
+      }
     }
+
+    return giftObjects;
   }
 
   void addItem() {}

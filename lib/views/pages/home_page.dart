@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:smart_collector/controllers/home_controller.dart';
 import 'package:smart_collector/widgets/ProfileInfoWidget.dart';
 
@@ -18,11 +19,19 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Obx(() => ProfileInfoWidget(
+            Obx(() {
+              final sum = controller.myList.value.isNotEmpty
+                  ? controller.myList.value.fold(
+                  0, (previousValue, element) => previousValue + element.amount!.toInt())
+                  : 0;
+
+              return ProfileInfoWidget(
                 name: controller.currentUser.value.name,
-                points: "78",
-                liters: "126",
-                image: controller.currentUser.value.avatar)),
+                points: sum.toString(),
+                liters: sum.toString(),
+                image: controller.currentUser.value.avatar,
+              );
+            }),
             Obx(
               () {
                 if (controller.myList.isNotEmpty) {
@@ -84,7 +93,7 @@ class HomePage extends StatelessWidget {
                           width: 250,
                           height: 250,
                         ),
-                        Text(
+                        const Text(
                           'Get rid of cooking oil \nwith the smart collector',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -94,7 +103,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Text(
+                        const Text(
                           'Make a request and we will come \nto your home with a gift',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -115,14 +124,19 @@ class HomePage extends StatelessWidget {
                     child: ListView.builder(
                       itemCount: controller.myList.length,
                       itemBuilder: (context, index) {
+                        final dateFormat = DateFormat('yyyy-MM-dd HH:mm');
+                        final date = controller.myList.value[index].date;
+                        final formattedDate = dateFormat.format(date!);
+
                         return RequestCard(
-                          liters: "${controller.myList[index].amount}L",
-                          date: controller.myList[index].date.toString(),
-                          gifts: controller.myList[index].gifts, address: controller.myList[index].address!,
-                          onDelete: ()=>{
-                              controller.deleteRequest(controller.myList[index].docId)
+                          liters: "${controller.myList.value[index].amount}L",
+                          gifts: [],
+                          date: formattedDate,
+                          address: "${controller.myList.value[index].giftObjects?.map((gift) => gift.title).join(', ')}L",
+                          onDelete: () => {
+                            controller.deleteRequest(controller.myList[index].docId)
                           },
-                          onTap: ()=>{
+                          onTap: () => {
                             controller.showQrCode(controller.myList[index].docId)
                           },
                         );
