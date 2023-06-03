@@ -39,8 +39,9 @@ class HomeController extends GetxController with BaseController {
 
   Future<void> fetchRequests() async {
     showLoading();
-    final requests = await FirebaseFirestore.instance.collection('requests').get();
-
+    final currentUser = FirebaseAuth.instance.currentUser;
+    final userUID = currentUser?.uid;
+    final requests = await FirebaseFirestore.instance.collection('requests').where('userUID', isEqualTo: userUID).get();
     final requestList = requests.docs.map((doc) async {
       final request = Request.fromMap(doc.data());
 
