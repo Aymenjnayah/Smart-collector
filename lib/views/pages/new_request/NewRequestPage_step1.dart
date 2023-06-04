@@ -22,7 +22,7 @@ class NewRequestPageStepOne extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustumAppBar(
+            const CustomAppBar(
               title: "New Request",
             ),
             SizedBox(height: AppSize.hs14),

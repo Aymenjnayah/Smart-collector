@@ -20,7 +20,7 @@ class NewRequestPageStepThree extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const CustumAppBar(
+              const CustomAppBar(
                 title: "Request details",
               ),
               const SizedBox(height: 20),

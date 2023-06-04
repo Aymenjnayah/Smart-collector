@@ -4,10 +4,10 @@ import 'package:smart_collector/widgets/medium_text_widget.dart';
 import '../config/app_colors.dart';
 import '../config/values_manager.dart';
 
-class CustumAppBar extends StatelessWidget {
+class CustomAppBar extends StatelessWidget {
   final String title;
 
-  const CustumAppBar({Key? key, required this.title}) : super(key: key);
+  const CustomAppBar({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

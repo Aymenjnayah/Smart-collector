@@ -16,7 +16,7 @@ class UsersPage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            CustumAppBar(
+            CustomAppBar(
               title: "Users",
             ),
             SizedBox(height: 20),

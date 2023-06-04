@@ -41,10 +41,12 @@ class HomeController extends GetxController with BaseController {
     showLoading();
     final currentUser = FirebaseAuth.instance.currentUser;
     final userUID = currentUser?.uid;
-    final requests = await FirebaseFirestore.instance.collection('requests').where('userUID', isEqualTo: userUID).get();
+    final requests = await FirebaseFirestore.instance
+        .collection('requests')
+        .where('userUID', isEqualTo: userUID)
+        .get();
     final requestList = requests.docs.map((doc) async {
-      final request = Request.fromMap(doc.data());
-
+      final request = Request.fromMap(doc.data(),doc.id);
       final List<Map<String, dynamic>> gifts = request.gifts;
       final giftIds = gifts.map((giftData) => giftData['id']).toList();
       final giftObjects = await getGiftObjects(giftIds);
@@ -55,6 +57,7 @@ class HomeController extends GetxController with BaseController {
     myList.assignAll(await Future.wait(requestList));
     hideLoading();
   }
+
 
 
   Future<List<Gift>> getGiftObjects(List<dynamic> giftIds) async {
@@ -88,6 +91,8 @@ class HomeController extends GetxController with BaseController {
   }
 
   void showQrCode(String? qrCode) {
+    print("showQrCode");
+    print(qrCode);
     final dialog = Get.dialog(
       Dialog(
         shape: RoundedRectangleBorder(
@@ -101,17 +106,16 @@ class HomeController extends GetxController with BaseController {
             children: [
               QrImageView(
                 data: qrCode ?? '',
-                size: 280,
-                embeddedImageStyle: QrEmbeddedImageStyle(
-                  size: const Size(100, 100),
-                ),
+                version: QrVersions.auto,
+                size: 320,
+                gapless: false,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
                   Get.back();
                 },
-                child: Text('Close'),
+                child: const Text('Close'),
               ),
             ],
           ),

@@ -21,7 +21,7 @@ class NewRequestPageSteptwo extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustumAppBar(
+            const CustomAppBar(
               title: "New Request",
             ),
             Padding(

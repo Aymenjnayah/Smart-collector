@@ -17,7 +17,7 @@ class AdminRequestsPage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const CustumAppBar(
+            const CustomAppBar(
               title: "Requests",
             ),
             SizedBox(height: 20),

@@ -22,7 +22,7 @@ class AdminRequestsController extends GetxController with BaseController {
     final requests = await FirebaseFirestore.instance.collection('requests').get();
 
     final requestList = requests.docs.map((doc) async {
-      final request = Request.fromMap(doc.data());
+      final request = Request.fromMap(doc.data(),doc.id);
 
       final List<Map<String, dynamic>> gifts = request.gifts;
       final giftIds = gifts.map((giftData) => giftData['id']).toList();

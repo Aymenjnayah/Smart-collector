@@ -17,7 +17,7 @@ class AdminCollectionsPage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const CustumAppBar(
+            const CustomAppBar(
               title: "Gifts",
             ),
             SizedBox(height: 20,),

@@ -17,7 +17,7 @@ class AdminAddGiftPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustumAppBar(
+              const CustomAppBar(
                 title: "Gifts",
               ),
               const SizedBox(height: 20),

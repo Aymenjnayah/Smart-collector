@@ -6,7 +6,7 @@ class Request {
   final DateTime? date;
   final List<Map<String, dynamic>> gifts;
   final String? userUID;
-  final String? status;
+  final bool? status;
   final String? qrCode;
   late final String? docId;
   List<Gift>? giftObjects; // Add the optional attribute for the array of Gift objects
@@ -23,7 +23,7 @@ class Request {
     this.giftObjects, // Include the optional attribute for the array of Gift objects in the constructor
   }) : gifts = gifts ?? [];
 
-  factory Request.fromMap(Map<String, dynamic> map) {
+  factory Request.fromMap(Map<String, dynamic> map,String documentID) {
     return Request(
       amount: map['amount'],
       address: map['address'],
@@ -36,7 +36,7 @@ class Request {
       userUID: map['userUID'],
       status: map['status'],
       qrCode: map['qrCode'],
-      docId: map['docId'],
+      docId: documentID,
       giftObjects: null, // Set the initial value of the giftObjects attribute to null
     );
   }
